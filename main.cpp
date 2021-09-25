@@ -3,7 +3,13 @@
 //
 
 #include <iostream>
+#include "AlgoList.h"
 
 int main() {
-    std::cout << "Hello World!" << std::endl;
+    algo::AlgoList<int> list;
+
+    list.push_front(3);
+    list.push_front(5);
+
+    list.display();
 }
