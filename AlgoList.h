@@ -26,10 +26,12 @@ namespace algo {
         int size;
 
     public:
+        // constructor
         AlgoList() : head(nullptr), tail(nullptr), size(0) {
 
         }
 
+        // destructor
         ~AlgoList() {
             listNode* toDelete = head;
             listNode* next;
@@ -40,7 +42,8 @@ namespace algo {
             }
         }
 
-        AlgoList(const AlgoList<T>& arg) {
+        // copy constructor
+        AlgoList(const AlgoList& arg) {
             size = arg.size;
             head = arg.head;
             tail = arg.tail;
@@ -50,6 +53,66 @@ namespace algo {
                 push_front(toCopy->data);
                 toCopy = toCopy->next;
             }
+        }
+
+        // assigment operator
+        AlgoList& operator=(const AlgoList& arg) {
+            if (this != &arg) {
+                // clears out the invoking object's list
+                ~AlgoList();
+
+                size = arg.size;
+                head = arg.head;
+                tail = arg.tail;
+
+                listNode *toCopy = head;
+                for (int i = 0; i < size; i++) {
+                    push_front(toCopy->data);
+                    toCopy = toCopy->next;
+                }
+            }
+            return *this;
+        }
+
+        // move constructor
+        AlgoList(AlgoList&& arg)  noexcept {
+            size = arg.size;
+            head = arg.head;
+            tail = arg.tail;
+
+            listNode* toCopy = head;
+            for (int i = 0; i < size; i++) {
+                push_front(toCopy->data);
+                toCopy = toCopy->next;
+            }
+
+            arg.size = 0;
+            arg.~AlgoList();
+            arg.head = nullptr;
+            arg.tail = nullptr;
+        }
+
+        // move assigment operator
+        AlgoList& operator=(AlgoList&& arg) {
+            if (this != &arg) {
+                ~AlgoList();
+
+                size = arg.size;
+                head = arg.head;
+                tail = arg.tail;
+
+                listNode* toCopy = head;
+                for (int i = 0; i < size; i++) {
+                    push_front(toCopy->data);
+                    toCopy = toCopy->next;
+                }
+
+                arg.size = 0;
+                arg.~AlgoList();
+                arg.head = nullptr;
+                arg.tail = nullptr;
+            }
+            return *this;
         }
 
         [[nodiscard]] int getSize() const {
