@@ -86,6 +86,28 @@ namespace algo {
             }
             return *this;
         }
+
+        void push_back(const T& arg) {
+            if (size == capacity) {
+                reallocate();
+            }
+            data[size] = arg;
+            size++;
+        }
+
+        T& at(int index) {
+            if (index >= size) {
+                throw std::out_of_range("Index is out of bounds.");
+            }
+            return data[index];
+        }
+
+        T& operator[](int index) {
+            if (index >= size) {
+                throw std::out_of_range("Index is out of bounds.");
+            }
+            return data[index];
+        }
     }
     };
 
