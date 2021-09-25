@@ -63,10 +63,30 @@ namespace algo {
         }
 
         // move constructor
-        AlgoVector(const AlgoVector&& rhs) {
+        AlgoVector(AlgoVector&& rhs) noexcept {
+            size = rhs.size;
+            capacity = rhs.capacity;
+            data = rhs.data;
 
+            rhs.size = 0;
+            rhs.capacity = 10;
+            rhs.data = new T[rhs.capacity];
         }
 
+        // move assigment operator
+        AlgoVector& operator=(AlgoVector&& rhs) noexcept {
+            if (this != &rhs) {
+                size = rhs.size;
+                capacity = rhs.capacity;
+                data = rhs.data;
+
+                rhs.size = 0;
+                rhs.capacity = 10;
+                rhs.data = new T[rhs.capacity];
+            }
+            return *this;
+        }
+    }
     };
 
 
