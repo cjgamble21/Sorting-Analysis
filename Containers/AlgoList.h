@@ -83,7 +83,7 @@ namespace algo {
             listNode* toCopy = head;
             for (int i = 0; i < size; i++) {
                 push_front(toCopy->data);
-                toCopy = toCopy->next;c
+                toCopy = toCopy->next;
             }
 
             arg.size = 0;
