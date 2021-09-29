@@ -8,3 +8,28 @@
 TEST_CASE("A vector object can be created") {
     algo::AlgoVector<std::string> vector;
 }
+
+TEST_CASE("A vector can have values pushed back") {
+    algo::AlgoVector<int> vec;
+    vec.push_back(2);
+    vec.push_back(3);
+    CHECK(vec.at(0) == 2);
+    CHECK(vec.at(1) == 3);
+}
+
+TEST_CASE("A vector can dynamically grows in size") {
+    algo::AlgoVector<int> vec;
+    for (int i = 0; i < 9; i++) {
+        vec.push_back(i);
+    }
+
+    CHECK(vec.getCapacity() == 10);
+    CHECK(vec.getSize() == 9);
+
+    for (int i = 0; i < 5; i++) {
+        vec.push_back(i);
+    }
+
+    CHECK(vec.getCapacity() == 100);
+    CHECK(vec.getSize() == 14);
+}

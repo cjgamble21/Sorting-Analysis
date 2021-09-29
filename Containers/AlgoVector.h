@@ -87,6 +87,14 @@ namespace algo {
             return *this;
         }
 
+        int getSize() {
+            return size;
+        }
+
+        int getCapacity() {
+            return capacity;
+        }
+
         void push_back(const T &arg) {
             if (size == capacity) {
                 reallocate();
