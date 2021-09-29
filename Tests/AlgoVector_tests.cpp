@@ -17,6 +17,18 @@ TEST_CASE("A vector can have values pushed back") {
     CHECK(vec.at(1) == 3);
 }
 
+TEST_CASE("A vector's .at() and operator[] functions return values at a given index") {
+    algo::AlgoVector<int> vec;
+    for (int i = 0; i < 20; i++) {
+        vec.push_back(i);
+    }
+
+    CHECK(vec.at(0) == 0);
+    CHECK(vec.at(9) == 9);
+    CHECK(vec[8] == 8);
+    CHECK(vec[12] == 12);
+}
+
 TEST_CASE("A vector can dynamically grows in size") {
     algo::AlgoVector<int> vec;
     for (int i = 0; i < 9; i++) {
@@ -93,5 +105,4 @@ TEST_CASE("A vector's move assigment operator can be invoked") {
 
     CHECK(vec1.getCapacity() == 10);
     CHECK(vec1.getSize() == 0);
-
 }
