@@ -26,6 +26,41 @@ namespace algo {
         int size;
 
     public:
+        // AlgoList iterator class
+        class Iterator {
+        private:
+            T* ptr;
+
+        public:
+            T& operator*() const {
+                return *ptr;
+            }
+
+            T* operator->() {
+                return ptr;
+            }
+
+            Iterator& operator++() {
+                ++ptr;
+                return *this;
+            }
+
+            Iterator& operator++(int) {
+                Iterator temp = *this;
+                ++(*this);
+                return temp;
+            }
+
+            friend bool operator==(const Iterator& lhs, const Iterator& rhs) {
+                return lhs.ptr == rhs.ptr;
+            }
+
+            friend bool operator!=(const Iterator& lhs, const Iterator& rhs) {
+                return lhs.ptr != rhs.ptr;
+            }
+        };
+
+
         // constructor
         AlgoList() : head(nullptr), tail(nullptr), size(0) {
 
