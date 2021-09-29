@@ -75,7 +75,7 @@ namespace algo {
         }
 
         // move constructor
-        AlgoList(AlgoList&& arg)  noexcept {
+        AlgoList(AlgoList&& arg) noexcept {
             size = arg.size;
             head = arg.head;
             tail = arg.tail;
@@ -83,7 +83,7 @@ namespace algo {
             listNode* toCopy = head;
             for (int i = 0; i < size; i++) {
                 push_front(toCopy->data);
-                toCopy = toCopy->next;
+                toCopy = toCopy->next;c
             }
 
             arg.size = 0;
@@ -93,7 +93,7 @@ namespace algo {
         }
 
         // move assigment operator
-        AlgoList& operator=(AlgoList&& arg) {
+        AlgoList& operator=(AlgoList&& arg)  noexcept {
             if (this != &arg) {
                 ~AlgoList();
 
