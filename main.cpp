@@ -11,5 +11,7 @@ int main() {
     list.push_front(3);
     list.push_front(5);
 
-    list.display();
+    for (int i : list) {
+
+    }
 }

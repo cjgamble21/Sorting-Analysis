@@ -5,6 +5,7 @@
 #ifndef INC_21F_PA02_CONNOR_GAMBLE_ALGOLIST_H
 #define INC_21F_PA02_CONNOR_GAMBLE_ALGOLIST_H
 
+class Iterator;
 #include <iostream>
 
 namespace algo {
@@ -26,40 +27,6 @@ namespace algo {
         int size;
 
     public:
-        // AlgoList iterator class
-        class Iterator {
-        private:
-            T* ptr;
-
-        public:
-            T& operator*() const {
-                return *ptr;
-            }
-
-            T* operator->() {
-                return ptr;
-            }
-
-            Iterator& operator++() {
-                ++ptr;
-                return *this;
-            }
-
-            Iterator& operator++(int) {
-                Iterator temp = *this;
-                ++(*this);
-                return temp;
-            }
-
-            friend bool operator==(const Iterator& lhs, const Iterator& rhs) {
-                return lhs.ptr == rhs.ptr;
-            }
-
-            friend bool operator!=(const Iterator& lhs, const Iterator& rhs) {
-                return lhs.ptr != rhs.ptr;
-            }
-        };
-
 
         // constructor
         AlgoList() : head(nullptr), tail(nullptr), size(0) {
@@ -181,6 +148,50 @@ namespace algo {
                 std::cout << toDisplay->data << std::endl;
                 toDisplay = toDisplay->next;
             }
+        }
+
+        // AlgoList iterator class
+        class Iterator {
+        private:
+            T* ptr;
+
+        public:
+            Iterator() {}
+
+            T& operator*() const {
+                return *ptr;
+            }
+
+            T* operator->() {
+                return ptr;
+            }
+
+            Iterator& operator++() {
+                ++ptr;
+                return *this;
+            }
+
+            Iterator& operator++(int) {
+                Iterator temp = *this;
+                ++(*this);
+                return temp;
+            }
+
+            friend bool operator==(const Iterator& lhs, const Iterator& rhs) {
+                return lhs.ptr == rhs.ptr;
+            }
+
+            friend bool operator!=(const Iterator& lhs, const Iterator& rhs) {
+                return lhs.ptr != rhs.ptr;
+            }
+        };
+
+        Iterator begin() {
+            return head;
+        }
+
+        Iterator end() {
+            return tail->next;
         }
     };
 }
