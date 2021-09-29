@@ -35,11 +35,13 @@ namespace algo {
 
         // destructor
         ~AlgoVector() {
+            std::cout << "Destructor called" << std::endl;
             delete[] data;
         }
 
         // copy constructor
         AlgoVector(const AlgoVector &rhs) {
+            std::cout << "Copy constructor called" << std::endl;
             size = rhs.size;
             capacity = rhs.capacity;
             data = new T[capacity];
@@ -50,6 +52,7 @@ namespace algo {
 
         // assignment operator
         AlgoVector &operator=(const AlgoVector &rhs) {
+            std::cout << "Assigment op called" << std::endl;
             if (this != &rhs) {
                 delete[] data;
                 size = rhs.size;

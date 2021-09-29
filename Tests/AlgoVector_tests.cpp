@@ -33,3 +33,30 @@ TEST_CASE("A vector can dynamically grows in size") {
     CHECK(vec.getCapacity() == 100);
     CHECK(vec.getSize() == 14);
 }
+
+TEST_CASE("A vector's copy constructor can be invoked") {
+    algo::AlgoVector<int> vec1;
+    for (int i = 0; i < 20; i++) {
+        vec1.push_back(i);
+    }
+
+    algo::AlgoVector<int> vec2 = vec1;
+
+    for (int i = 0; i < 20; i++) {
+        CHECK(vec2.at(i) == vec1.at(i));
+    }
+}
+
+TEST_CASE("A vector's assignment operator can be invoked") {
+    algo::AlgoVector<int> vec1;
+    for (int i = 0; i < 15; i++) {
+        vec1.push_back(i);
+    }
+
+    algo::AlgoVector<int> vec2;
+    vec2 = vec1;
+
+    for (int i = 0; i < 15; i++) {
+        CHECK(vec2.at(i) == vec1.at(i));
+    }
+}
