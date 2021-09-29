@@ -119,6 +119,14 @@ namespace algo {
             return size;
         }
 
+        listNode* getHead() const {
+            return head;
+        }
+
+        listNode* getTail() const {
+            return tail;
+        }
+
         void push_front(const T& arg) {
             auto newNode = new listNode(arg);
             if (size == 0) {
