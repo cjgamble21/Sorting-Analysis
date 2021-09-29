@@ -60,3 +60,38 @@ TEST_CASE("A vector's assignment operator can be invoked") {
         CHECK(vec2.at(i) == vec1.at(i));
     }
 }
+
+TEST_CASE("A vector's move constructor can be invoked") {
+    algo::AlgoVector<int> vec1;
+    for (int i = 0; i < 20; i++) {
+        vec1.push_back(i);
+    }
+
+    algo::AlgoVector<int> vec2(std::move(vec1));
+
+    for (int i = 0; i < 20; i++) {
+        CHECK(vec2.at(i) == i);
+    }
+
+    CHECK(vec1.getSize() == 0);
+    CHECK(vec1.getCapacity() == 10);
+}
+
+TEST_CASE("A vector's move assigment operator can be invoked") {
+    algo::AlgoVector<int> vec1;
+    for (int i = 0; i < 20; i++) {
+        vec1.push_back(i);
+    }
+
+    algo::AlgoVector<int> vec2;
+
+    vec2 = std::move(vec1);
+
+    for (int i = 0; i < 20; i++) {
+        CHECK(vec2.at(i) == i);
+    }
+
+    CHECK(vec1.getCapacity() == 10);
+    CHECK(vec1.getSize() == 0);
+
+}
