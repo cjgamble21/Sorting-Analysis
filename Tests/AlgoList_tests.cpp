@@ -67,16 +67,45 @@ TEST_CASE("A list can be copy constructed") {
     }
 }
 
-//TEST_CASE("A list can be set equal to another list") {
-//    algo::AlgoList<int> list1;
-//    for (int i = 0; i < 20; i++) {
-//        list1.push_front(i);
-//    }
-//
-//    algo::AlgoList<int> list2;
-//    for (int i = 0; i < 5; i++) {
-//        list2.push_front(i);
-//    }
-//
-//    list2 = list1;
-//}
+TEST_CASE("A list can be set equal to another list") {
+    algo::AlgoList<int> list1;
+    for (int i = 0; i < 20; i++) {
+        list1.push_front(i);
+    }
+
+    algo::AlgoList<int> list2;
+    for (int i = 0; i < 5; i++) {
+        list2.push_front(i);
+    }
+
+    list2 = list1;
+
+    algo::AlgoList<int>::Iterator itr;
+    itr = list1.begin();
+    for (int i : list2) {
+        CHECK(*itr == i);
+        ++itr;
+    }
+    CHECK(list1.getSize() == list2.getSize());
+}
+
+TEST_CASE("A list can be move constructed") {
+    algo::AlgoList<int> list1;
+    for (int i = 0; i < 20; i++) {
+        list1.push_front(i);
+    }
+
+    algo::AlgoList<int> temp = list1;
+
+    algo::AlgoList<int> list2 = std::move(list1);
+
+    algo::AlgoList<int>::Iterator itr = temp.begin();
+
+    for (int i : list2) {
+        CHECK(*itr == i);
+        ++itr;
+    }
+
+    CHECK(temp.getSize() == list2.getSize());
+    CHECK(list1.getSize() == 0);
+}

@@ -75,18 +75,13 @@ namespace algo {
         }
 
         // move constructor
-        AlgoList(AlgoList&& arg) noexcept {
-            size = arg.size;
-            head = arg.head;
-            tail = arg.tail;
-
-            listNode* toCopy = head;
-            for (int i = 0; i < size; i++) {
+        AlgoList(AlgoList&& arg)  noexcept : head(nullptr), tail(nullptr), size(0) {
+            listNode* toCopy = arg.tail;
+            for (int i = 0; i < arg.size; i++) {
                 push_front(toCopy->data);
-                toCopy = toCopy->next;
+                toCopy = toCopy->prev;
             }
 
-            arg.size = 0;
             arg.~AlgoList();
             arg.head = nullptr;
             arg.tail = nullptr;
