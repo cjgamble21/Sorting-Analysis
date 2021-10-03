@@ -40,6 +40,14 @@ TEST_CASE("A list can be displayed") {
     }
 }
 
+TEST_CASE("A list can be destructed") {
+    algo::AlgoList<int> list;
+    for (int i = 0; i < 10; i++) {
+        list.push_front(i);
+    }
+    list.clear();
+}
+
 TEST_CASE("A list can be copy constructed") {
     algo::AlgoList<int> list1;
     for (int i = 0; i < 15; i++) {
@@ -58,3 +66,17 @@ TEST_CASE("A list can be copy constructed") {
         itr2++;
     }
 }
+
+//TEST_CASE("A list can be set equal to another list") {
+//    algo::AlgoList<int> list1;
+//    for (int i = 0; i < 20; i++) {
+//        list1.push_front(i);
+//    }
+//
+//    algo::AlgoList<int> list2;
+//    for (int i = 0; i < 5; i++) {
+//        list2.push_front(i);
+//    }
+//
+//    list2 = list1;
+//}

@@ -40,13 +40,15 @@ namespace algo {
 
         // destructor
         ~AlgoList() {
-            listNode* toDelete = head;
-            listNode* next;
-            while (toDelete) {
-                next = toDelete->next;
-                delete toDelete;
-                toDelete = next;
+            if (head != nullptr) {
+                listNode* temp;
+                while (head) {
+                    temp = head->next;
+                    delete head;
+                    head = temp;
+                }
             }
+            size = 0;
         }
 
         // copy constructor
@@ -62,16 +64,11 @@ namespace algo {
         AlgoList& operator=(const AlgoList& arg) {
             if (this != &arg) {
                 // clears out the invoking object's list
-                ~AlgoList();
-
-                size = arg.size;
-                head = arg.head;
-                tail = arg.tail;
-
-                listNode *toCopy = head;
-                for (int i = 0; i < size; i++) {
+                this->~AlgoList();
+                listNode *toCopy = arg.tail;
+                for (int i = 0; i < arg.size; i++) {
                     push_front(toCopy->data);
-                    toCopy = toCopy->next;
+                    toCopy = toCopy->prev;
                 }
             }
             return *this;
@@ -144,11 +141,17 @@ namespace algo {
         }
 
         void display() {
-            listNode* toDisplay = head;
-            for (int i = 0; i < size; i++) {
-                std::cout << toDisplay->data << std::endl;
-                toDisplay = toDisplay->next;
+            if (size > 0) {
+                listNode *toDisplay = head;
+                for (int i = 0; i < size; i++) {
+                    std::cout << toDisplay->data << std::endl;
+                    toDisplay = toDisplay->next;
+                }
             }
+        }
+
+        void clear() {
+            this->~AlgoList();
         }
 
         // AlgoList iterator class
