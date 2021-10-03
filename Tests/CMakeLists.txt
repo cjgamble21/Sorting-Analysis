@@ -8,5 +8,5 @@ FetchContent_Declare(
 
 FetchContent_MakeAvailable(Catch2)
 
-add_executable(Tests AlgoVector_tests.cpp)
+add_executable(Tests AlgoVector_tests.cpp AlgoList_tests.cpp)
 target_link_libraries(Tests PRIVATE Catch2::Catch2WithMain)

@@ -13,6 +13,8 @@ namespace algo {
     class AlgoList {
     private:
         struct listNode {
+            friend class Iterator;
+
             T data;
             listNode* next;
             listNode* prev;
@@ -20,12 +22,17 @@ namespace algo {
             explicit listNode(const T &arg, listNode *next = nullptr, listNode *prev = nullptr) : data(arg), next(next), prev(prev) {
 
             }
+            friend std::ostream& operator<<(std::ostream &stream, const listNode* &arg) {
+                stream << arg->data;
+                return stream;
+            }
         };
         listNode* head;
         listNode* tail;
         int size;
 
     public:
+
         // constructor
         AlgoList() : head(nullptr), tail(nullptr), size(0) {
 
@@ -119,6 +126,14 @@ namespace algo {
             return size;
         }
 
+        listNode* getHead() const {
+            return head;
+        }
+
+        listNode* getTail() const {
+            return tail;
+        }
+
         void push_front(const T& arg) {
             auto newNode = new listNode(arg);
             if (size == 0) {
@@ -138,6 +153,78 @@ namespace algo {
                 std::cout << toDisplay->data << std::endl;
                 toDisplay = toDisplay->next;
             }
+        }
+
+        // AlgoList iterator class
+        class Iterator {
+        private:
+            listNode* ptr;
+
+        public:
+
+            Iterator() : ptr(nullptr) {}
+
+            explicit Iterator(listNode* node) : ptr(node) {}
+
+            ~Iterator() = default;
+
+            Iterator(const Iterator& arg) {
+                ptr = arg.ptr;
+            }
+
+            Iterator& operator=(const Iterator& arg) {
+                if (this != &arg) {
+                    ptr = arg.ptr;
+                }
+                return *this;
+            }
+
+            T& operator*() const {
+                return ptr->data;
+            }
+
+            T* operator->() {
+                return ptr;
+            }
+
+            Iterator& operator++() {
+                ptr = ptr->next;
+                return *this;
+            }
+
+            Iterator operator++(int) {
+                Iterator temp = *this;
+                ++(*this);
+                return temp;
+            }
+
+            // operator-- is bidirectional iterator functionality, just thought I would add it
+            Iterator& operator--() {
+                ptr = ptr->prev;
+                return *this;
+            }
+
+            Iterator operator--(int) {
+                Iterator temp = *this;
+                --(*this);
+                return temp;
+            }
+
+            friend bool operator==(const Iterator& lhs, const Iterator& rhs) {
+                return lhs.ptr == rhs.ptr;
+            }
+
+            friend bool operator!=(const Iterator& lhs, const Iterator& rhs) {
+                return lhs.ptr != rhs.ptr;
+            }
+        };
+
+        Iterator begin() {
+            return Iterator(head);
+        }
+
+        Iterator end() {
+            return Iterator(nullptr);
         }
     };
 }
