@@ -50,15 +50,11 @@ namespace algo {
         }
 
         // copy constructor
-        AlgoList(const AlgoList& arg) {
-            size = arg.size;
-            head = arg.head;
-            tail = arg.tail;
-
-            listNode* toCopy = head;
-            for (int i = 0; i < size; i++) {
+        AlgoList(const AlgoList& arg) : head(nullptr), tail(nullptr), size(0) {
+            listNode* toCopy = arg.tail;
+            for (int i = 0; i < arg.size; i++) {
                 push_front(toCopy->data);
-                toCopy = toCopy->next;
+                toCopy = toCopy->prev;
             }
         }
 
