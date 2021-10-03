@@ -166,6 +166,19 @@ namespace algo {
 
             explicit Iterator(listNode* node) : ptr(node) {}
 
+            ~Iterator() = default;
+
+            Iterator(const Iterator& arg) {
+                ptr = arg.ptr;
+            }
+
+            Iterator& operator=(const Iterator& arg) {
+                if (this != &arg) {
+                    ptr = arg.ptr;
+                }
+                return *this;
+            }
+
             T& operator*() const {
                 return ptr->data;
             }
@@ -182,6 +195,18 @@ namespace algo {
             Iterator operator++(int) {
                 Iterator temp = *this;
                 ++(*this);
+                return temp;
+            }
+
+            // operator-- is bidirectional iterator functionality, just thought I would add it
+            Iterator& operator--() {
+                ptr = ptr->prev;
+                return *this;
+            }
+
+            Iterator operator--(int) {
+                Iterator temp = *this;
+                --(*this);
                 return temp;
             }
 
