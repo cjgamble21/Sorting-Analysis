@@ -5,7 +5,6 @@
 #ifndef INC_21F_PA02_CONNOR_GAMBLE_ALGOLIST_H
 #define INC_21F_PA02_CONNOR_GAMBLE_ALGOLIST_H
 
-class Iterator;
 #include <iostream>
 
 namespace algo {
@@ -14,12 +13,18 @@ namespace algo {
     class AlgoList {
     private:
         struct listNode {
+            friend class Iterator;
+
             T data;
             listNode* next;
             listNode* prev;
 
             explicit listNode(const T &arg, listNode *next = nullptr, listNode *prev = nullptr) : data(arg), next(next), prev(prev) {
 
+            }
+            friend std::ostream& operator<<(std::ostream &stream, const listNode* &arg) {
+                stream << arg->data;
+                return stream;
             }
         };
         listNode* head;
@@ -153,13 +158,16 @@ namespace algo {
         // AlgoList iterator class
         class Iterator {
         private:
-            T* ptr;
+            listNode* ptr;
 
         public:
-            Iterator() {}
+
+            Iterator() : ptr(nullptr) {}
+
+            explicit Iterator(listNode* node) : ptr(node) {}
 
             T& operator*() const {
-                return *ptr;
+                return ptr->data;
             }
 
             T* operator->() {
@@ -167,11 +175,11 @@ namespace algo {
             }
 
             Iterator& operator++() {
-                ++ptr;
+                ptr = ptr->next;
                 return *this;
             }
 
-            Iterator& operator++(int) {
+            Iterator operator++(int) {
                 Iterator temp = *this;
                 ++(*this);
                 return temp;
@@ -187,11 +195,11 @@ namespace algo {
         };
 
         Iterator begin() {
-            return head;
+            return Iterator(head);
         }
 
         Iterator end() {
-            return tail->next;
+            return Iterator(nullptr);
         }
     };
 }

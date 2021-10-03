@@ -11,7 +11,21 @@ int main() {
     list.push_front(3);
     list.push_front(5);
 
-    for (int i : list) {
+    algo::AlgoList<int>::Iterator itr;
 
+    itr = list.begin();
+    std::cout << *itr << std::endl;
+
+    algo::AlgoList<int>::Iterator itr2;
+
+    itr2 = list.begin();
+
+    if (itr == itr2) {
+        std::cout << "Success!" << std::endl;
     }
+
+    for (int i : list) {
+        std::cout << i << std::endl;
+    }
+
 }
