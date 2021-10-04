@@ -88,21 +88,16 @@ namespace algo {
         }
 
         // move assigment operator
-        AlgoList& operator=(AlgoList&& arg)  noexcept {
+        AlgoList& operator=(AlgoList&& arg) noexcept {
             if (this != &arg) {
-                ~AlgoList();
+                this->~AlgoList();
 
-                size = arg.size;
-                head = arg.head;
-                tail = arg.tail;
-
-                listNode* toCopy = head;
-                for (int i = 0; i < size; i++) {
+                listNode* toCopy = arg.tail;
+                for (int i = 0; i < arg.size; i++) {
                     push_front(toCopy->data);
-                    toCopy = toCopy->next;
+                    toCopy = toCopy->prev;
                 }
 
-                arg.size = 0;
                 arg.~AlgoList();
                 arg.head = nullptr;
                 arg.tail = nullptr;
@@ -131,6 +126,19 @@ namespace algo {
                 newNode->next = head;
                 head->prev = newNode;
                 head = newNode;
+            }
+            size++;
+        }
+
+        void push_back(const T& arg) {
+            auto newNode = new listNode(arg);
+            if (size == 0) {
+                head = newNode;
+                tail = newNode;
+            } else {
+                newNode->prev = tail;
+                tail->next = newNode;
+                tail = newNode;
             }
             size++;
         }

@@ -26,6 +26,22 @@ TEST_CASE("A list can have objects added to the front") {
     CHECK(head->data == 3);
 }
 
+TEST_CASE("A list can have objects added to the end") {
+    algo::AlgoList<int> list;
+    for (int i = 0; i < 15; i++) {
+        list.push_back(i*3);
+    }
+
+    algo::AlgoList<int>::Iterator itr = list.begin();
+
+    for (int i : list) {
+        CHECK(i == *itr);
+        ++itr;
+    }
+
+    list.display();
+}
+
 TEST_CASE("A list can be displayed") {
     algo::AlgoList<int> list;
     for (int i = 0; i < 10; i++) {
@@ -98,6 +114,32 @@ TEST_CASE("A list can be move constructed") {
     algo::AlgoList<int> temp = list1;
 
     algo::AlgoList<int> list2 = std::move(list1);
+
+    algo::AlgoList<int>::Iterator itr = temp.begin();
+
+    for (int i : list2) {
+        CHECK(*itr == i);
+        ++itr;
+    }
+
+    CHECK(temp.getSize() == list2.getSize());
+    CHECK(list1.getSize() == 0);
+}
+
+TEST_CASE("A list can be move assigned") {
+    algo::AlgoList<int> list1;
+    for (int i = 0; i < 15; i++) {
+        list1.push_front(i);
+    }
+
+    algo::AlgoList<int> list2;
+    for (int i = 0; i < 10; i++) {
+        list2.push_front(i*2);
+    }
+
+    algo::AlgoList<int> temp = list1;
+
+    list2 = std::move(list1);
 
     algo::AlgoList<int>::Iterator itr = temp.begin();
 
