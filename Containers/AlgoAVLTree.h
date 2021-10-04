@@ -6,7 +6,7 @@
 #define INC_21F_PA02_CONNOR_GAMBLE_ALGOAVLTREE_H
 
 #include <iostream>
-#include <stack>
+#include <queue>
 
 namespace algo {
 
@@ -140,11 +140,11 @@ namespace algo {
             }
         }
 
-        void addToStack(treeNode* c, std::stack<treeNode*>& stack) {
+        void addToQueue(treeNode* c, std::queue<treeNode*>& queue) {
             if (c != nullptr) {
-                addToStack(c->left, stack);
-                stack.push(c);
-                addToStack(c->right, stack);
+                addToQueue(c->left, queue);
+                queue.push(c);
+                addToQueue(c->right, queue);
             }
         }
 
@@ -203,7 +203,7 @@ namespace algo {
         private:
             treeNode* ptr;
             treeNode* head;
-            std::stack<treeNode*> stack;
+            std::queue<treeNode*> queue;
 
 
         public:
@@ -227,9 +227,9 @@ namespace algo {
             }
 
             Iterator& operator++() {
-                if (!stack.empty()) {
-                    ptr = stack.top();
-                    stack.pop();
+                if (!queue.empty()) {
+                    ptr = queue.front();
+                    queue.pop();
                 } else {
                     ptr = nullptr;
                 }
@@ -253,9 +253,9 @@ namespace algo {
 
         Iterator begin() {
             Iterator itr;
-            addToStack(root, itr.stack);
-            itr.ptr = itr.stack.top();
-            itr.stack.pop();
+            addToQueue(root, itr.queue);
+            itr.ptr = itr.queue.front();
+            itr.queue.pop();
             return itr;
         }
 

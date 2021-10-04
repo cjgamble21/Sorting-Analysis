@@ -14,8 +14,9 @@ TEST_CASE("A tree can have values inserted") {
     for (int i = 0; i < 12; i++) {
         tree.insert(i);
     }
-    algo::AlgoAVLTree<int>::Iterator itr;
-    for (itr = tree.begin(); itr != tree.end(); itr++) {
-        std::cout << *itr << std::endl;
+    algo::AlgoAVLTree<int>::Iterator itr = tree.begin();
+    for (int i : tree) {
+        CHECK(i == *itr);
+        itr++;
     }
 }
