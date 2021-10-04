@@ -19,10 +19,9 @@ namespace algo {
             T data;
             treeNode* left;
             treeNode* right;
-            treeNode* parent;
             int height;
 
-            explicit treeNode(const T& arg, treeNode* left = nullptr, treeNode* right = nullptr, treeNode* parent = nullptr) : data(arg), left(left), right(right), parent(parent) {}
+            explicit treeNode(const T& arg, treeNode* left = nullptr, treeNode* right = nullptr) : data(arg), left(left), right(right) {}
 
             friend std::ostream& operator<<(std::ostream &stream, const treeNode* &arg) {
                 stream << arg->data;
@@ -107,14 +106,10 @@ namespace algo {
                 size++;
             } else if (val < c->data) {
                 balance(c);
-                treeNode* lchild = insert(c->left, val);
-                c->left = lchild;
-                lchild->parent = c;
+                return insert(c->left, val);
             } else if (c->data < val) {
                 balance(c);
-                treeNode* rchild = insert(c->right, val);
-                c->right = rchild;
-                rchild->parent = c;
+                return insert(c->right, val);
             }
             return c;
         }
