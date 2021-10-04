@@ -12,7 +12,7 @@ namespace algo {
     template<typename T>
     class AlgoAVLTree {
     private:
-        struct treeNode() {
+        struct treeNode {
             friend class Iterator;
 
             T data;
@@ -22,21 +22,20 @@ namespace algo {
 
             explicit treeNode(const T& arg, treeNode* left = nullptr, treeNode* right = nullptr) : data(arg), left(left), right(right) {}
 
-            friend std::ostream& operator<<(std::ostream &stream, const listNode* &arg) {
+            friend std::ostream& operator<<(std::ostream &stream, const treeNode* &arg) {
                 stream << arg->data;
                 return stream;
             }
-        }
+        };
         treeNode* root;
         int size;
 
-        DSTree() : root(nullptr), size(0) {}
+        // keeping the memory management methods in the private section to keep user from invoking them
+        AlgoAVLTree(const AlgoAVLTree& arg) = default;
 
-        DSTree(const DSTree& arg) {
+        AlgoAVLTree& operator=(const AlgoAVLTree& arg) = default;
 
-        }
-
-        void balance(Node*& t) {
+        void balance(treeNode*& t) {
             if (t == nullptr) {
                 return;
             }
@@ -56,8 +55,8 @@ namespace algo {
             t->height = max(height(t->left), height(t->right)) + 1;
         }
 
-        void rotateWithLeftChild(Node*& k2) {
-            Node* k1 = k2->left;
+        void rotateWithLeftChild(treeNode*& k2) {
+            treeNode* k1 = k2->left;
             k2->left = k1->right;
             k1->right = k2;
             k2->height = max(height(k2->left), height(k2->right) + 1);
@@ -65,8 +64,8 @@ namespace algo {
             k2 = k1;
         }
 
-        void rotateWithRightChild(Node*& k2) {
-            Node* k1 = k2->right;
+        void rotateWithRightChild(treeNode*& k2) {
+            treeNode* k1 = k2->right;
             k2->right = k1->left;
             k1->left = k2;
             k2->height = max(height(k2->left), height(k2->right)) + 1;
@@ -74,12 +73,12 @@ namespace algo {
             k2 = k1;
         }
 
-        void doubleWithLeftChild(Node*& k3) {
+        void doubleWithLeftChild(treeNode*& k3) {
             rotateWithRightChild(k3->left);
             rotateWithLeftChild(k3);
         }
 
-        void doubleWithRightChild(Node*& k3) {
+        void doubleWithRightChild(treeNode*& k3) {
             rotateWithLeftChild(k3->right);
             rotateWithRightChild(k3);
         }
@@ -88,7 +87,7 @@ namespace algo {
             return (n1 > n2 ? n1 : n2);
         }
 
-        void clearTree(Node*& c) {
+        void clearTree(treeNode*& c) {
             if (c != nullptr) {
                 clearTree(c->left);
                 clearTree(c->right);
@@ -96,9 +95,9 @@ namespace algo {
             }
         }
 
-        T& insert(Node*& c, const T& val) {
+        T& insert(treeNode*& c, const T& val) {
             if (c == nullptr) {
-                c = new Node(val);
+                c = new treeNode(val);
                 size++;
             } else if (val < c->data) {
                 balance(c);
@@ -110,7 +109,7 @@ namespace algo {
             return c->data;
         }
 
-        T search(Node* c, const T& arg) {
+        T search(treeNode* c, const T& arg) {
             if (c == nullptr) {
                 std::cout << "Object not found" << std::endl;
                 return T();
@@ -123,7 +122,7 @@ namespace algo {
             }
         }
 
-        void printTree(Node* c) {
+        void printTree(treeNode* c) {
             if (c != nullptr) {
                 printTree(c->left);
                 std::cout << c->data << std::endl;
@@ -131,7 +130,7 @@ namespace algo {
             }
         }
 
-        bool contains(Node*&c, const T& arg) {
+        bool contains(treeNode*&c, const T& arg) {
             if (c == nullptr) {
                 return false;
             } else if (arg < c->data) {
@@ -141,6 +140,42 @@ namespace algo {
             } else {
                 return true;
             }
+        }
+
+    public:
+        AlgoAVLTree() : root(nullptr), size(0) {}
+
+        ~AlgoAVLTree() {
+            clearTree(root);
+        }
+
+        T& insert(const T& val) {
+            return insert(root, val);
+        }
+
+        int height(treeNode* t) const {
+            return (t == nullptr ? -1 : t->height);
+        }
+
+        void display() {
+            printTree(root);
+        }
+
+        bool contains(const T& arg) {
+            return contains(root, arg);
+        }
+
+        T search(const T& arg) {
+            return search(root, arg);
+        }
+
+        void clear() {
+            clearTree(root);
+        }
+
+
+        int getSize() const {
+            return size;
         }
     };
 }
