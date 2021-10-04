@@ -177,6 +177,35 @@ namespace algo {
         int getSize() const {
             return size;
         }
+
+        class Iterator {
+        private:
+            treeNode ptr;
+
+        public:
+
+            Iterator() : ptr(nullptr) {}
+
+            explicit Iterator(treeNode* node) : ptr(node) {}
+
+            ~Iterator() = default;
+
+            Iterator(const Iterator& arg) {
+                ptr = arg.ptr;
+            }
+
+            T& operator*() {
+                return *ptr;
+            }
+
+            T* operator->() {
+                return ptr;
+            }
+
+            Iterator& operator++() {
+
+            }
+        };
     };
 }
 
