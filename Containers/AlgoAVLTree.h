@@ -6,6 +6,7 @@
 #define INC_21F_PA02_CONNOR_GAMBLE_ALGOAVLTREE_H
 
 #include <iostream>
+#include <queue>
 
 namespace algo {
 
@@ -18,13 +19,18 @@ namespace algo {
             T data;
             treeNode* left;
             treeNode* right;
+            treeNode* parent;
             int height;
 
-            explicit treeNode(const T& arg, treeNode* left = nullptr, treeNode* right = nullptr) : data(arg), left(left), right(right) {}
+            explicit treeNode(const T& arg, treeNode* left = nullptr, treeNode* right = nullptr, treeNode* parent = nullptr) : data(arg), left(left), right(right), parent(parent) {}
 
             friend std::ostream& operator<<(std::ostream &stream, const treeNode* &arg) {
                 stream << arg->data;
                 return stream;
+            }
+
+            T& getData() {
+                return data;
             }
         };
         treeNode* root;
@@ -95,18 +101,22 @@ namespace algo {
             }
         }
 
-        T& insert(treeNode*& c, const T& val) {
+        treeNode* insert(treeNode*& c, const T& val) {
             if (c == nullptr) {
                 c = new treeNode(val);
                 size++;
             } else if (val < c->data) {
                 balance(c);
-                return insert(c->left, val);
+                treeNode* lchild = insert(c->left, val);
+                c->left = lchild;
+                lchild->parent = c;
             } else if (c->data < val) {
                 balance(c);
-                return insert(c->right, val);
+                treeNode* rchild = insert(c->right, val);
+                c->right = rchild;
+                rchild->parent = c;
             }
-            return c->data;
+            return c;
         }
 
         T search(treeNode* c, const T& arg) {
@@ -125,8 +135,16 @@ namespace algo {
         void printTree(treeNode* c) {
             if (c != nullptr) {
                 printTree(c->left);
-                std::cout << c->data << std::endl;
+                std::cout << "data: " << c->data << " height: " << c->height << " parent: " << c->parent << std::endl;
                 printTree(c->right);
+            }
+        }
+
+        void addToQueue(treeNode* c, std::queue<treeNode*>& queue) {
+            if (c != nullptr) {
+                addToQueue(c->left, queue);
+                queue.push(c);
+                addToQueue(c->right, queue);
             }
         }
 
@@ -150,7 +168,8 @@ namespace algo {
         }
 
         T& insert(const T& val) {
-            return insert(root, val);
+            treeNode* temp = insert(root, val);
+            return temp->getData();
         }
 
         int height(treeNode* t) const {
@@ -174,8 +193,74 @@ namespace algo {
         }
 
 
-        int getSize() const {
+        [[nodiscard]] int getSize() const {
             return size;
+        }
+
+        class Iterator {
+           friend class AlgoAVLTree;
+
+        private:
+            treeNode* ptr;
+            treeNode* head;
+            std::queue<treeNode*> queue;
+
+
+        public:
+
+            Iterator() : ptr(nullptr), head(nullptr) {}
+
+            explicit Iterator(treeNode* node) : ptr(node), head(nullptr) {}
+
+            ~Iterator() = default;
+
+            Iterator(const Iterator& arg) {
+                ptr = arg.ptr;
+            }
+
+            T& operator*() {
+                return ptr->data;
+            }
+
+            T* operator->() {
+                return ptr;
+            }
+
+            Iterator& operator++() {
+                if (!queue.empty()) {
+                    ptr = queue.front();
+                    queue.pop();
+                } else {
+                    ptr = nullptr;
+                }
+                return *this;
+            }
+
+            Iterator operator++(int) {
+                Iterator temp = *this;
+                ++(*this);
+                return temp;
+            }
+
+            friend bool operator==(const Iterator& lhs, const Iterator& rhs) {
+                return lhs.ptr == rhs.ptr;
+            }
+
+            friend bool operator!=(const Iterator& lhs, const Iterator& rhs) {
+                return lhs.ptr != rhs.ptr;
+            }
+        };
+
+        Iterator begin() {
+            Iterator itr;
+            addToQueue(root, itr.queue);
+            itr.ptr = itr.queue.front();
+            itr.queue.pop();
+            return itr;
+        }
+
+        Iterator end() {
+            return Iterator();
         }
     };
 }

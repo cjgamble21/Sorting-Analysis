@@ -11,7 +11,12 @@ TEST_CASE("A tree object can be instantiated") {
 
 TEST_CASE("A tree can have values inserted") {
     algo::AlgoAVLTree<int> tree;
-    for (int i = 0; i < 10; i++) {
+    for (int i = 0; i < 12; i++) {
         tree.insert(i);
+    }
+    algo::AlgoAVLTree<int>::Iterator itr = tree.begin();
+    for (int i : tree) {
+        CHECK(i == *itr);
+        itr++;
     }
 }
