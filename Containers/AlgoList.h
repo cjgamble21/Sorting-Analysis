@@ -40,25 +40,23 @@ namespace algo {
 
         // destructor
         ~AlgoList() {
-            listNode* toDelete = head;
-            listNode* next;
-            while (toDelete) {
-                next = toDelete->next;
-                delete toDelete;
-                toDelete = next;
+            if (head != nullptr) {
+                listNode* temp;
+                while (head) {
+                    temp = head->next;
+                    delete head;
+                    head = temp;
+                }
             }
+            size = 0;
         }
 
         // copy constructor
-        AlgoList(const AlgoList& arg) {
-            size = arg.size;
-            head = arg.head;
-            tail = arg.tail;
-
-            listNode* toCopy = head;
-            for (int i = 0; i < size; i++) {
+        AlgoList(const AlgoList& arg) : head(nullptr), tail(nullptr), size(0) {
+            listNode* toCopy = arg.tail;
+            for (int i = 0; i < arg.size; i++) {
                 push_front(toCopy->data);
-                toCopy = toCopy->next;
+                toCopy = toCopy->prev;
             }
         }
 
@@ -66,55 +64,40 @@ namespace algo {
         AlgoList& operator=(const AlgoList& arg) {
             if (this != &arg) {
                 // clears out the invoking object's list
-                ~AlgoList();
-
-                size = arg.size;
-                head = arg.head;
-                tail = arg.tail;
-
-                listNode *toCopy = head;
-                for (int i = 0; i < size; i++) {
+                this->~AlgoList();
+                listNode *toCopy = arg.tail;
+                for (int i = 0; i < arg.size; i++) {
                     push_front(toCopy->data);
-                    toCopy = toCopy->next;
+                    toCopy = toCopy->prev;
                 }
             }
             return *this;
         }
 
         // move constructor
-        AlgoList(AlgoList&& arg) noexcept {
-            size = arg.size;
-            head = arg.head;
-            tail = arg.tail;
-
-            listNode* toCopy = head;
-            for (int i = 0; i < size; i++) {
+        AlgoList(AlgoList&& arg)  noexcept : head(nullptr), tail(nullptr), size(0) {
+            listNode* toCopy = arg.tail;
+            for (int i = 0; i < arg.size; i++) {
                 push_front(toCopy->data);
-                toCopy = toCopy->next;
+                toCopy = toCopy->prev;
             }
 
-            arg.size = 0;
             arg.~AlgoList();
             arg.head = nullptr;
             arg.tail = nullptr;
         }
 
         // move assigment operator
-        AlgoList& operator=(AlgoList&& arg)  noexcept {
+        AlgoList& operator=(AlgoList&& arg) noexcept {
             if (this != &arg) {
-                ~AlgoList();
+                this->~AlgoList();
 
-                size = arg.size;
-                head = arg.head;
-                tail = arg.tail;
-
-                listNode* toCopy = head;
-                for (int i = 0; i < size; i++) {
+                listNode* toCopy = arg.tail;
+                for (int i = 0; i < arg.size; i++) {
                     push_front(toCopy->data);
-                    toCopy = toCopy->next;
+                    toCopy = toCopy->prev;
                 }
 
-                arg.size = 0;
                 arg.~AlgoList();
                 arg.head = nullptr;
                 arg.tail = nullptr;
@@ -147,12 +130,31 @@ namespace algo {
             size++;
         }
 
-        void display() {
-            listNode* toDisplay = head;
-            for (int i = 0; i < size; i++) {
-                std::cout << toDisplay->data << std::endl;
-                toDisplay = toDisplay->next;
+        void push_back(const T& arg) {
+            auto newNode = new listNode(arg);
+            if (size == 0) {
+                head = newNode;
+                tail = newNode;
+            } else {
+                newNode->prev = tail;
+                tail->next = newNode;
+                tail = newNode;
             }
+            size++;
+        }
+
+        void display() {
+            if (size > 0) {
+                listNode *toDisplay = head;
+                for (int i = 0; i < size; i++) {
+                    std::cout << toDisplay->data << std::endl;
+                    toDisplay = toDisplay->next;
+                }
+            }
+        }
+
+        void clear() {
+            this->~AlgoList();
         }
 
         // AlgoList iterator class
