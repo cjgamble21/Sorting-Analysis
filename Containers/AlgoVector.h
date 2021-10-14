@@ -119,6 +119,87 @@ namespace algo {
             }
             return data[index];
         }
+
+        class Iterator {
+        private:
+            T* ptr;
+
+        public:
+            Iterator() : ptr(nullptr) {}
+
+            Iterator(const Iterator& arg) {
+                ptr = arg.ptr;
+            }
+
+            Iterator& operator=(const Iterator& arg) {
+                if (this != &arg) {
+                    ptr = arg.ptr;
+                }
+                return *this;
+            }
+
+            T& operator*() const {
+                return *ptr;
+            }
+
+            T* operator->() {
+                return ptr;
+            }
+
+            Iterator& operator++() {
+                ptr++;
+                return *this;
+            }
+
+            Iterator operator++(int) {
+                Iterator temp = *this;
+                ++(*this);
+                return temp;
+            }
+
+            Iterator& operator--() {
+                ptr--;
+                return *this;
+            }
+
+            Iterator operator--(int) {
+                Iterator temp = *this;
+                --(*this);
+                return temp;
+            }
+
+            Iterator operator+(int num) {
+                Iterator toReturn;
+                toReturn = ptr + num;
+                return toReturn;
+            }
+
+            Iterator operator-(int num) {
+                Iterator toReturn;
+                toReturn = ptr - num;
+                return toReturn;
+            }
+
+            bool operator<(const Iterator& rhs) {
+//                return *ptr < rhs.(*ptr);
+            }
+
+            friend bool operator==(const Iterator& lhs, const Iterator& rhs) {
+                return lhs.ptr == rhs.ptr;
+            }
+
+            friend bool operator!=(const Iterator& lhs, const Iterator& rhs) {
+                return lhs.ptr != rhs.ptr;
+            }
+        };
+
+        Iterator begin() {
+            return Iterator(&data[0]);
+        }
+
+        Iterator end() {
+            return Iterator(&data[size]);
+        }
     };
 }
 
