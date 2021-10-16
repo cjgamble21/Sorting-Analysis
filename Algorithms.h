@@ -10,25 +10,26 @@
 namespace algo {
 
     template<class RAIterator>
-        // insertion_sort takes two iterators, presumably for a vector
-        /*
-         * Code referenced for insertion_sort:
-         * https://github.com/CS1342-Spring2021/Lecture-Materials/blob/master/Chapter09/insertion_sort.cpp
-         */
-        void insertion_sort(RAIterator begin, RAIterator end) {
-            RAIterator forSwap;
-            for (RAIterator itr = begin + 1; itr != end; itr++) {
-                forSwap = itr;
+    // insertion_sort takes two iterators, presumably for a vector
+    /*
+     * Code referenced for insertion_sort:
+     * https://github.com/CS1342-Spring2021/Lecture-Materials/blob/master/Chapter09/insertion_sort.cpp
+     */
+    void insertion_sort(RAIterator begin, RAIterator end) {
+        RAIterator forSwap;
+        for (RAIterator itr = begin + 1; itr != end; itr++) {
+            forSwap = itr;
 
-                while (forSwap > begin && *forSwap < *(forSwap - 1)) {
-                    std::swap(*forSwap, *(forSwap - 1));
-                    --forSwap;
-                }
+            while (forSwap > begin && *forSwap < *(forSwap - 1)) {
+                std::swap(*forSwap, *(forSwap - 1));
+                --forSwap;
             }
         }
+    }
+
     template<class RAIterator, class Compare>
     // compare class must define the behavior of the < operator
-        void insertion_sort(RAIterator begin, RAIterator end, Compare comparator) {
+    void insertion_sort(RAIterator begin, RAIterator end, Compare comparator) {
         RAIterator forSwap;
         for (RAIterator itr = begin + 1; itr != end; itr++) {
             forSwap = itr;
@@ -36,26 +37,89 @@ namespace algo {
             while (forSwap > begin && comparator(*forSwap, *(forSwap - 1))) {
                 std::swap(*forSwap, *(forSwap - 1));
                 --forSwap;
-                }
             }
         }
+    }
 
 
     template<class RAIterator>
-        auto partition(RAIterator begin, RAIterator end) {
+    RAIterator partition(RAIterator begin, RAIterator end) {
+        auto pivot = begin + (end - begin) / 2;
 
+        bool done = false;
+        RAIterator l = begin;
+        RAIterator h = end;
+
+        while (!done) {
+
+            while (*l < *pivot) {
+                ++l;
+            }
+
+            while (*pivot < *h) {
+                --h;
+            }
+
+            if (l >= h) {
+                done = true;
+            } else {
+                std::swap(*l, *h);
+
+                ++l;
+                --h;
+            }
+        }
+        return h;
     }
 
     template<class RAIterator>
-        void quick_sort(RAIterator begin, RAIterator end) {
-            if (end <= begin) {
-                return;
-            }
-
+    void quick_sort(RAIterator begin, RAIterator end) {
+        if (begin < end) {
             auto partition_itr = partition(begin, end);
             quick_sort(begin, partition_itr - 1);
-            quick_sort(partition_itr, end);
+            quick_sort(partition_itr + 1, end);
         }
-}
+    }
 
+    template<class RAIterator, class Compare>
+    RAIterator partition(RAIterator begin, RAIterator end, Compare comparator) {
+        auto pivot = begin + (end - begin) / 2;
+
+        bool done = false;
+        RAIterator l = begin;
+        RAIterator h = end;
+
+        while (!done) {
+
+            while (comparator(*l, *pivot)) {
+                ++l;
+            }
+
+            while (comparator(*pivot, *h)) {
+                --h;
+            }
+
+            if (l >= h) {
+                done = true;
+            } else {
+                std::swap(*l, *h);
+
+                ++l;
+                --h;
+            }
+        }
+        return h;
+    }
+
+    template<class RAIterator, class Compare>
+    void quick_sort(RAIterator begin, RAIterator end, Compare comparator) {
+        if (begin < end) {
+            auto partition_itr = partition(begin, end, comparator);
+            quick_sort(begin, partition_itr - 1);
+            quick_sort(partition_itr + 1, end);
+        }
+    }
+
+
+}
 #endif //INC_21F_PA02_CONNOR_GAMBLE_ALGORITHMS_H

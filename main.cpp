@@ -21,9 +21,9 @@ int main() {
 
 //    algo::insertion_sort(vector.begin(), vector.end(), compare);
 
-//    algo::quick_sort(vector.begin(), vector.end() - 1);
+    algo::quick_sort(vector.begin(), vector.end() - 1, compare);
 
-//    for (int i : vector) {
-//        std::cout << i << std::endl;
-//    }
+    for (int i : vector) {
+        std::cout << i << std::endl;
+    }
 }
