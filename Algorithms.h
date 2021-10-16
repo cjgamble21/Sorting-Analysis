@@ -42,8 +42,19 @@ namespace algo {
 
 
     template<class RAIterator>
-        void quick_sort(RAIterator begin, RAIterator end) {
+        auto partition(RAIterator begin, RAIterator end) {
 
+    }
+
+    template<class RAIterator>
+        void quick_sort(RAIterator begin, RAIterator end) {
+            if (end <= begin) {
+                return;
+            }
+
+            auto partition_itr = partition(begin, end);
+            quick_sort(begin, partition_itr - 1);
+            quick_sort(partition_itr, end);
         }
 }
 

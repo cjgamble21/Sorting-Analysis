@@ -19,9 +19,11 @@ int main() {
     vector.push_back(1);
     vector.push_back(15);
 
-    algo::insertion_sort(vector.begin(), vector.end(), compare);
+//    algo::insertion_sort(vector.begin(), vector.end(), compare);
 
-    for (int i : vector) {
-        std::cout << i << std::endl;
-    }
+//    algo::quick_sort(vector.begin(), vector.end() - 1);
+
+//    for (int i : vector) {
+//        std::cout << i << std::endl;
+//    }
 }

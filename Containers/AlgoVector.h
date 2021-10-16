@@ -196,6 +196,10 @@ namespace algo {
                 return toReturn;
             }
 
+            int operator-(const Iterator& arg) {
+                return ptr - arg.ptr;
+            }
+
             bool operator<(const Iterator& rhs) {
                 return ptr < rhs.ptr;
             }
