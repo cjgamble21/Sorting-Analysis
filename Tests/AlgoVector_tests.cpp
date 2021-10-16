@@ -106,3 +106,37 @@ TEST_CASE("A vector's move assigment operator can be invoked") {
     CHECK(vec1.getCapacity() == 10);
     CHECK(vec1.getSize() == 0);
 }
+
+TEST_CASE("Testing for iterators") {
+    algo::AlgoVector<int> vec1;
+    algo::AlgoVector<int> vec2;
+
+    for (int i = 0; i < 15; i++) {
+        vec1.push_back(i);
+        vec2.push_back(i);
+    }
+
+    for (int i : vec1) {
+        std::cout << i << std::endl;
+    }
+
+    algo::AlgoVector<int>::Iterator itr1;
+    algo::AlgoVector<int>::Iterator itr2;
+
+    itr2 = &vec1.at(3);
+
+    std::cout << *itr2 << std::endl;
+
+    algo::AlgoVector<int>::Iterator itr3;
+    itr2 = itr2 + 3;
+
+    std::cout << *itr2 << std::endl;
+    // itr2 should equal 6 here
+
+    itr3 = itr2 - 2; // should equal 4
+
+    CHECK(itr3 < itr2);
+    CHECK(itr3 <= itr2);
+    CHECK(itr2 > itr3);
+    CHECK(itr2 >= itr3);
+}

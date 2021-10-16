@@ -127,12 +127,17 @@ namespace algo {
         public:
             Iterator() : ptr(nullptr) {}
 
-            Iterator(const T& arg) {
+            Iterator(T* arg) {
                 ptr = arg;
             }
 
             Iterator(const Iterator& arg) {
                 ptr = arg.ptr;
+            }
+
+            Iterator& operator=(const T& arg) {
+                ptr = arg;
+                return *this;
             }
 
             Iterator& operator=(const Iterator& arg) {
@@ -178,10 +183,14 @@ namespace algo {
                 return toReturn;
             }
 
-            Iterator operator+(const Iterator& arg) {
-                Iterator toReturn;
-                toReturn = ptr + arg.ptr;
-                return toReturn;
+            Iterator& operator+=(int num) {
+                ptr = ptr + num;
+                return *this;
+            }
+
+            Iterator& operator-=(int num) {
+                ptr = ptr - num;
+                return *this;
             }
 
             Iterator operator-(int num) {
@@ -190,34 +199,52 @@ namespace algo {
                 return toReturn;
             }
 
-            Iterator operator-(const Iterator& arg) {
-                Iterator toReturn;
-                toReturn = ptr - arg.ptr;
-                return toReturn;
-            }
-
             bool operator<(const Iterator& rhs) {
                 return ptr < rhs.ptr;
+            }
+
+            friend bool operator<(const Iterator& lhs, const Iterator& rhs) {
+                return lhs.ptr < rhs.ptr;
             }
 
             bool operator>(const Iterator& rhs) {
                 return ptr > rhs.ptr;
             }
 
+            friend bool operator>(const Iterator& lhs, const Iterator& rhs) {
+                return lhs.ptr > rhs.ptr;
+            }
+
             bool operator<=(const Iterator& rhs) {
                 return ptr <= rhs.ptr;
+            }
+
+            friend bool operator<=(const Iterator& lhs, const Iterator& rhs) {
+                return lhs.ptr <= rhs.ptr;
             }
 
             bool operator >=(const Iterator& rhs) {
                 return ptr >= rhs.ptr;
             }
 
+            friend bool operator>=(const Iterator& lhs, const Iterator& rhs) {
+                return lhs.ptr >= rhs.ptr;
+            }
+
             bool operator==(const Iterator& rhs) {
                 return ptr == rhs.ptr;
             }
 
+            friend bool operator==(const Iterator& lhs, const Iterator& rhs) {
+                return lhs.ptr == rhs.ptr;
+            }
+
             bool operator!=(const Iterator& rhs) {
                 return ptr != rhs.ptr;
+            }
+
+            friend bool operator !=(const Iterator& lhs, const Iterator& rhs) {
+                return lhs.ptr != rhs.ptr;
             }
         };
 
