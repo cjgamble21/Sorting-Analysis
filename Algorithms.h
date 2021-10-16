@@ -10,7 +10,6 @@
 namespace algo {
 
     template<class RAIterator>
-
         // insertion_sort takes two iterators, presumably for a vector
         /*
          * Code referenced for insertion_sort:
@@ -26,6 +25,25 @@ namespace algo {
                     --forSwap;
                 }
             }
+        }
+    template<class RAIterator, class Compare>
+    // compare class must define the behavior of the < operator
+        void insertion_sort(RAIterator begin, RAIterator end, Compare comparator) {
+        RAIterator forSwap;
+        for (RAIterator itr = begin + 1; itr != end; itr++) {
+            forSwap = itr;
+
+            while (forSwap > begin && comparator(*forSwap, *(forSwap - 1))) {
+                std::swap(*forSwap, *(forSwap - 1));
+                --forSwap;
+                }
+            }
+        }
+
+
+    template<class RAIterator>
+        void quick_sort(RAIterator begin, RAIterator end) {
+
         }
 }
 

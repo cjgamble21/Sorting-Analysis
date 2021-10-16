@@ -6,6 +6,10 @@
 #include "Algorithms.h"
 #include "Containers/AlgoList.h"
 
+bool compare(int a, int b) {
+    return a < b;
+}
+
 int main() {
     algo::AlgoVector<int> vector;
     vector.push_back(3);
@@ -15,7 +19,7 @@ int main() {
     vector.push_back(1);
     vector.push_back(15);
 
-    algo::insertion_sort(vector.begin(), vector.end());
+    algo::insertion_sort(vector.begin(), vector.end(), compare);
 
     for (int i : vector) {
         std::cout << i << std::endl;
