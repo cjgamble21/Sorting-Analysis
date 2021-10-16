@@ -127,6 +127,10 @@ namespace algo {
         public:
             Iterator() : ptr(nullptr) {}
 
+            Iterator(const T& arg) {
+                ptr = arg;
+            }
+
             Iterator(const Iterator& arg) {
                 ptr = arg.ptr;
             }
@@ -174,22 +178,46 @@ namespace algo {
                 return toReturn;
             }
 
+            Iterator operator+(const Iterator& arg) {
+                Iterator toReturn;
+                toReturn = ptr + arg.ptr;
+                return toReturn;
+            }
+
             Iterator operator-(int num) {
                 Iterator toReturn;
                 toReturn = ptr - num;
                 return toReturn;
             }
 
+            Iterator operator-(const Iterator& arg) {
+                Iterator toReturn;
+                toReturn = ptr - arg.ptr;
+                return toReturn;
+            }
+
             bool operator<(const Iterator& rhs) {
-//                return *ptr < rhs.(*ptr);
+                return ptr < rhs.ptr;
             }
 
-            friend bool operator==(const Iterator& lhs, const Iterator& rhs) {
-                return lhs.ptr == rhs.ptr;
+            bool operator>(const Iterator& rhs) {
+                return ptr > rhs.ptr;
             }
 
-            friend bool operator!=(const Iterator& lhs, const Iterator& rhs) {
-                return lhs.ptr != rhs.ptr;
+            bool operator<=(const Iterator& rhs) {
+                return ptr <= rhs.ptr;
+            }
+
+            bool operator >=(const Iterator& rhs) {
+                return ptr >= rhs.ptr;
+            }
+
+            bool operator==(const Iterator& rhs) {
+                return ptr == rhs.ptr;
+            }
+
+            bool operator!=(const Iterator& rhs) {
+                return ptr != rhs.ptr;
             }
         };
 
