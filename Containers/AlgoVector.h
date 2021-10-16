@@ -35,11 +35,13 @@ namespace algo {
 
         // destructor
         ~AlgoVector() {
+            std::cout << "Destructor called" << std::endl;
             delete[] data;
         }
 
         // copy constructor
         AlgoVector(const AlgoVector &rhs) {
+            std::cout << "Copy constructor called" << std::endl;
             size = rhs.size;
             capacity = rhs.capacity;
             data = new T[capacity];
@@ -50,6 +52,7 @@ namespace algo {
 
         // assignment operator
         AlgoVector &operator=(const AlgoVector &rhs) {
+            std::cout << "Assigment op called" << std::endl;
             if (this != &rhs) {
                 delete[] data;
                 size = rhs.size;
@@ -87,6 +90,14 @@ namespace algo {
             return *this;
         }
 
+        int getSize() {
+            return size;
+        }
+
+        int getCapacity() {
+            return capacity;
+        }
+
         void push_back(const T &arg) {
             if (size == capacity) {
                 reallocate();
@@ -107,6 +118,142 @@ namespace algo {
                 throw std::out_of_range("Index is out of bounds.");
             }
             return data[index];
+        }
+
+        class Iterator {
+        private:
+            T* ptr;
+
+        public:
+            Iterator() : ptr(nullptr) {}
+
+            explicit Iterator(T* arg) {
+                ptr = arg;
+            }
+
+            Iterator(const Iterator& arg) {
+                ptr = arg.ptr;
+            }
+
+            Iterator& operator=(const T& arg) {
+                ptr = arg;
+                return *this;
+            }
+
+            Iterator& operator=(const Iterator& arg) {
+                if (this != &arg) {
+                    ptr = arg.ptr;
+                }
+                return *this;
+            }
+
+            T& operator*() const {
+                return *ptr;
+            }
+
+            T* operator->() {
+                return ptr;
+            }
+
+            Iterator& operator++() {
+                ptr++;
+                return *this;
+            }
+
+            Iterator operator++(int) {
+                Iterator temp = *this;
+                ++(*this);
+                return temp;
+            }
+
+            Iterator& operator--() {
+                ptr--;
+                return *this;
+            }
+
+            Iterator operator--(int) {
+                Iterator temp = *this;
+                --(*this);
+                return temp;
+            }
+
+            Iterator operator+(int num) {
+                Iterator toReturn;
+                toReturn = ptr + num;
+                return toReturn;
+            }
+
+            Iterator& operator+=(int num) {
+                ptr = ptr + num;
+                return *this;
+            }
+
+            Iterator& operator-=(int num) {
+                ptr = ptr - num;
+                return *this;
+            }
+
+            Iterator operator-(int num) {
+                Iterator toReturn;
+                toReturn = ptr - num;
+                return toReturn;
+            }
+
+            bool operator<(const Iterator& rhs) {
+                return ptr < rhs.ptr;
+            }
+
+            friend bool operator<(const Iterator& lhs, const Iterator& rhs) {
+                return lhs.ptr < rhs.ptr;
+            }
+
+            bool operator>(const Iterator& rhs) {
+                return ptr > rhs.ptr;
+            }
+
+            friend bool operator>(const Iterator& lhs, const Iterator& rhs) {
+                return lhs.ptr > rhs.ptr;
+            }
+
+            bool operator<=(const Iterator& rhs) {
+                return ptr <= rhs.ptr;
+            }
+
+            friend bool operator<=(const Iterator& lhs, const Iterator& rhs) {
+                return lhs.ptr <= rhs.ptr;
+            }
+
+            bool operator >=(const Iterator& rhs) {
+                return ptr >= rhs.ptr;
+            }
+
+            friend bool operator>=(const Iterator& lhs, const Iterator& rhs) {
+                return lhs.ptr >= rhs.ptr;
+            }
+
+            bool operator==(const Iterator& rhs) {
+                return ptr == rhs.ptr;
+            }
+
+            friend bool operator==(const Iterator& lhs, const Iterator& rhs) {
+                return lhs.ptr == rhs.ptr;
+            }
+
+            bool operator!=(const Iterator& rhs) {
+                return ptr != rhs.ptr;
+            }
+
+            friend bool operator !=(const Iterator& lhs, const Iterator& rhs) {
+                return lhs.ptr != rhs.ptr;
+            }
+        };
+
+        Iterator begin() {
+            return Iterator(&data[0]);
+        }
+
+        Iterator end() {
+            return Iterator(&data[size]);
         }
     };
 }
