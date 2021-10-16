@@ -127,7 +127,7 @@ namespace algo {
         public:
             Iterator() : ptr(nullptr) {}
 
-            Iterator(T* arg) {
+            explicit Iterator(T* arg) {
                 ptr = arg;
             }
 
