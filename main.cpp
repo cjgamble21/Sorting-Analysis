@@ -12,16 +12,28 @@ bool compare(int a, int b) {
 
 int main() {
     algo::AlgoVector<int> vector;
+    int random{0};
+
+
     vector.push_back(3);
     vector.push_back(13);
     vector.push_back(6);
-    vector.push_back(21);
+    vector.push_back(23);
+    vector.push_back(6);
+    vector.push_back(55);
+    vector.push_back(2);
+    vector.push_back(85);
+    vector.push_back(60);
     vector.push_back(1);
     vector.push_back(15);
-
+    vector.push_back(20);
+//    for (int i : vector) {
+//        std::cout << i << std::endl;
+//    }
+//    std::cout << std::endl;
 //    algo::insertion_sort(vector.begin(), vector.end(), compare);
 
-    algo::quick_sort(vector.begin(), vector.end() - 1, compare);
+    algo::quick_sort(vector.begin(), vector.end(), compare);
 
     for (int i : vector) {
         std::cout << i << std::endl;

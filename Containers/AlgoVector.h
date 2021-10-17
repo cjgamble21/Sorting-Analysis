@@ -95,6 +95,56 @@ namespace algo {
             return capacity;
         }
 
+        int partition(int i, int k) {
+            int l;
+            int h;
+            int midpoint;
+            T pivot;
+            midpoint = i + (k - i) / 2;
+//            std::cout << midpoint << std::endl;
+            pivot = data[midpoint];
+            std::cout << pivot << std::endl;
+
+            bool done = false;
+            l = i;
+            h = k;
+
+            while (l < h) {
+                /* Increment l while numbers[l] < pivot */
+                while (data[l] < pivot) {
+                    ++l;
+                }
+
+                /* Decrement h while pivot < numbers[h] */
+                while (pivot < data[h]) {
+                    --h;
+                }
+
+                /* If there are zero or one elements remaining,
+                 all numbers are partitioned. Return h */
+                if (l < h) {
+                    /* Swap numbers[l] and numbers[h],
+                     update l and h */
+                    std::swap(data[l], data[h]);
+
+                    ++l;
+                    --h;
+                }
+            }
+
+            return h;
+        }
+
+        void quickSort(int i, int k) {
+            int j;
+            if (i < k) {
+                j = partition(i, k);
+
+                quickSort(i, j);
+                quickSort(j + 1, k);
+            }
+        }
+
         void push_back(const T &arg) {
             if (size == capacity) {
                 reallocate();
@@ -197,7 +247,8 @@ namespace algo {
             }
 
             int operator-(const Iterator& arg) {
-                return ptr - arg.ptr;
+                int diff = ptr - arg.ptr;
+                return diff;
             }
 
             bool operator<(const Iterator& rhs) {

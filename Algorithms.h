@@ -6,6 +6,7 @@
 #define INC_21F_PA02_CONNOR_GAMBLE_ALGORITHMS_H
 
 #include "Containers/AlgoVector.h"
+#include <algorithm>
 
 namespace algo {
 
@@ -43,79 +44,50 @@ namespace algo {
 
 
     template<class RAIterator>
+    /*
+     * Code referenced for quick_sort:
+     * https://github.com/jesyspa/linear-cpp/blob/master/Chapter%2009%20-%20Iterators/vector_algos.cpp
+     */
     RAIterator partition(RAIterator begin, RAIterator end) {
-        auto pivot = begin + (end - begin) / 2;
-
-        bool done = false;
-        RAIterator l = begin;
-        RAIterator h = end;
-
-        while (!done) {
-
-            while (*l < *pivot) {
-                ++l;
-            }
-
-            while (*pivot < *h) {
-                --h;
-            }
-
-            if (l >= h) {
-                done = true;
-            } else {
-                std::swap(*l, *h);
-
-                ++l;
-                --h;
+        auto pivot = begin++;
+        for (auto itr = begin; itr != end; itr++) {
+            if (*itr < *pivot) {
+                std::swap(*pivot, *itr);
+                ++pivot;
+                std::swap(*pivot, *itr);
             }
         }
-        return h;
+        return pivot;
     }
 
     template<class RAIterator>
     void quick_sort(RAIterator begin, RAIterator end) {
-        if (begin < end) {
+        if (end - begin > 1) {
             auto partition_itr = partition(begin, end);
-            quick_sort(begin, partition_itr - 1);
+            quick_sort(begin, partition_itr);
             quick_sort(partition_itr + 1, end);
         }
     }
 
     template<class RAIterator, class Compare>
+    // Compare should specify the behavior of the < operator
     RAIterator partition(RAIterator begin, RAIterator end, Compare comparator) {
-        auto pivot = begin + (end - begin) / 2;
-
-        bool done = false;
-        RAIterator l = begin;
-        RAIterator h = end;
-
-        while (!done) {
-
-            while (comparator(*l, *pivot)) {
-                ++l;
-            }
-
-            while (comparator(*pivot, *h)) {
-                --h;
-            }
-
-            if (l >= h) {
-                done = true;
-            } else {
-                std::swap(*l, *h);
-
-                ++l;
-                --h;
+        auto pivot = begin++;
+        for (auto itr = begin; itr != end; itr++) {
+            if (comparator(*itr, *pivot)) {
+                std::swap(*pivot, *itr);
+                ++pivot;
+                std::swap(*pivot, *itr);
             }
         }
-        return h;
+        return pivot;
     }
 
     template<class RAIterator, class Compare>
     void quick_sort(RAIterator begin, RAIterator end, Compare comparator) {
-        if (begin < end) {
+        if (end - begin > 1) {
             auto partition_itr = partition(begin, end, comparator);
-            quick_sort(begin, partition_itr - 1);
+            quick_sort(begin, partition_itr);
             quick_sort(partition_itr + 1, end);
         }
     }
