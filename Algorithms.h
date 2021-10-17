@@ -92,6 +92,5 @@ namespace algo {
         }
     }
 
-
 }
 #endif //INC_21F_PA02_CONNOR_GAMBLE_ALGORITHMS_H
