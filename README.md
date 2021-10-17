@@ -18,3 +18,33 @@ For example, since I am on a Mac, my absolute file path is:
 ```
 /Users/cjgamble/CLionProjects/21f-pa02-connor-gamble/Data/IntegerData
 ```
+Once the absolute path is specified, run the project and the application will output a csv file of the performance data for the sorting algorithms, relative to each file size/configuration.
+
+### Sample input
+Every input file is a specific configuration and size, as specified by the name of the file. 
+A file can have either integers or strings, have a varying size, be sorted in ascending order, descending order, or not at all, or have either 20% duplicates or 40% duplicates. 
+
+For example:
+```
+data_integer_100000_null_0.2.txt
+```
+This data file is full of integers, has a size of 100000, is not sorted, and has 20% duplicates. 
+
+### Sample Output
+This project will output a file that gives the raw performance data of each algorithm on each input file. 
+Each section will give the path of the input file, the performance of each algorithm on that data set, and a message confirming 
+that the dataset was fully sorted.
+
+Each section will look something like this:
+```
+Data File: /Users/cjgamble/21f-pa02-connor-gamble/Data/IntegerData/data_integer_1000_ascend_0.0.txt
+
+Insertion Sort: 35.23 seconds
+
+Quick Sort: 2.34 seconds
+
+Heap Sort: 1.38 seconds
+
+Data set is fully sorted!
+```
+## Data Generation
