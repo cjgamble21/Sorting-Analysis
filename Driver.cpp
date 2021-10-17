@@ -5,10 +5,10 @@
 #include "Driver.h"
 
 void Driver::run() {
-    fileName = "/Users/cjgamble/SMU/CS3353/PA02/StringData/Size1000";
+    fileName = "/Users/cjgamble/CLionProjects/21f-pa02-connor-gamble/Data";
     for (const auto& entry : std::filesystem::directory_iterator(fileName)) {
-        std::string buffer;
-        algo::AlgoVector<std::string> vector;
+        int buffer;
+        algo::AlgoVector<int> vector;
         std::ifstream file(entry.path());
 
         if (!file.is_open()) {
@@ -21,12 +21,30 @@ void Driver::run() {
             }
         }
 
-        algo::quick_sort(vector.begin(), vector.end());
+        algo::AlgoVector<int> toSort = vector;
 
-    for (auto& i : vector) {
-        std::cout << i << std::endl;
-    }
+        std::chrono::steady_clock::time_point start = std::chrono::steady_clock::now();
 
-//        std::cout << std::is_sorted(vector.begin(), vector.end());
+        algo::quick_sort(toSort.begin(), toSort.end());
+
+        std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
+
+        std::cout << "File: " << entry.path() << std::endl;
+        std::cout << "Time diff: " << std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count() << " milliseconds" << std::endl;
+//        std::cout << std::is_sorted(toSort.begin(), toSort.end()) << std::endl;
+//        std::cout << std::endl;
+
+        toSort = vector;
+//        algo::quick_sort(toSort.begin(), toSort.end());
+
+
+//        std::cout << std::is_sorted(toSort.begin(), toSort.end()) << std::endl;
+//        std::cout << std::endl;
+
+        toSort = vector;
+//        algo::heap_sort(toSort.begin(), toSort.end());
+//        std::cout << std::is_sorted(toSort.begin(), toSort.end()) << std::endl;
+//        std::cout << std::endl;
+
     }
 }

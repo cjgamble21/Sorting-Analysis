@@ -9,6 +9,8 @@
 #include "Algorithms.h"
 #include <fstream>
 #include <filesystem>
+#include <chrono>
+
 class Driver {
 private:
     std::string fileName;
