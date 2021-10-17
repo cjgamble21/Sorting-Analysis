@@ -48,3 +48,37 @@ Heap Sort: 1.38 seconds
 Data set is fully sorted!
 ```
 ## Data Generation
+
+### Generation Algorithm
+All data was generated using the following algorithm:
+
+Two data sets:
+```
+Integers && Strings
+```
+
+Six data set sizes: 
+```
+{100, 1000, 10000, 20000, 50000, 100000}
+```
+
+For each data set size:
+```
+Randomized data set with 0% duplicates
+Data set with 0% duplicates sorted in ascending order
+Data set with 0% duplicates sorted in descending order
+Randomized data set with 20% duplicates
+Randomized data set with 40% duplicates
+```
+The sizes I chose were relatively small for two reasons:
+```
+1. Running insertion sort on extremely large datasets would take hours
+2. Running quick sort on large datasets that are already sorted causes call stack overflows
+```
+
+### Generating Integer Data
+All integer data was generated with a pseudo-random number generator. 
+The number range varied betweeen 1 and 3,000,000. 
+
+### Generating String Data
+All string data was generated as 10 character strings, all alphanumeric capital letters. In a loop run 10 times, a pseudo-random number generator picked a number between 65 and 90, then that number was casted to a character and appended to the data string.
