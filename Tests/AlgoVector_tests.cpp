@@ -116,27 +116,30 @@ TEST_CASE("Testing for iterators") {
         vec2.push_back(i);
     }
 
-    for (int i : vec1) {
-        std::cout << i << std::endl;
-    }
-
     algo::AlgoVector<int>::Iterator itr1;
     algo::AlgoVector<int>::Iterator itr2;
 
     itr2 = &vec1.at(3);
 
-    std::cout << *itr2 << std::endl;
+//    std::cout << *itr2 << std::endl;
 
     algo::AlgoVector<int>::Iterator itr3;
     itr2 = itr2 + 3;
 
-    std::cout << *itr2 << std::endl;
+//    std::cout << *itr2 << std::endl;
     // itr2 should equal 6 here
 
     itr3 = itr2 - 2; // should equal 4
+
+    int size = vec1.getSize();
+    int diff = vec1.end() - vec1.begin();
 
     CHECK(itr3 < itr2);
     CHECK(itr3 <= itr2);
     CHECK(itr2 > itr3);
     CHECK(itr2 >= itr3);
+
+    std::cout << size << std::endl;
+    std::cout << diff << std::endl;
+
 }

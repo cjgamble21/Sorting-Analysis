@@ -196,6 +196,11 @@ namespace algo {
                 return toReturn;
             }
 
+            int operator-(const Iterator& arg) {
+                int diff = ptr - arg.ptr;
+                return diff;
+            }
+
             bool operator<(const Iterator& rhs) {
                 return ptr < rhs.ptr;
             }
