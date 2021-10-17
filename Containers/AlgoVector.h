@@ -18,7 +18,7 @@ namespace algo {
 
         // method which gives vector its dynamic sizing
         void reallocate() {
-            capacity *= 10;
+            capacity *= 100;
             T *temp = new T[capacity];
             for (int i = 0; i < size; i++) {
                 temp[i] = data[i];
@@ -93,6 +93,12 @@ namespace algo {
 
         int getCapacity() {
             return capacity;
+        }
+
+        void clear() {
+            size = 0;
+            delete[] data;
+            data = new T[capacity];
         }
 
         void push_back(const T &arg) {

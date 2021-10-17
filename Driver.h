@@ -19,6 +19,7 @@ public:
     Driver() = default;
     Driver(std::string f) : fileName(f) {}
     void run();
+    void writeToFile(std::ofstream&);
 };
 
 

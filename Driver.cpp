@@ -5,10 +5,18 @@
 #include "Driver.h"
 
 void Driver::run() {
-    fileName = "/Users/cjgamble/CLionProjects/21f-pa02-connor-gamble/Data";
+    fileName = "/Users/cjgamble/CLionProjects/21f-pa02-connor-gamble/Data/IntegerData";
+    std::ofstream output("IntegerResultsData.txt");
+    typedef std::chrono::steady_clock Clock;
+    algo::AlgoVector<int> vector;
+    algo::AlgoVector<int> toSort;
+    Clock::time_point start;
+    Clock::time_point end;
+    std::chrono::duration<double> time{};
+
     for (const auto& entry : std::filesystem::directory_iterator(fileName)) {
         int buffer;
-        algo::AlgoVector<int> vector;
+//        std::cout << entry.path() << std::endl;
         std::ifstream file(entry.path());
 
         if (!file.is_open()) {
@@ -18,33 +26,53 @@ void Driver::run() {
             while (!file.eof()) {
                 file >> buffer;
                 vector.push_back(buffer);
+                toSort.push_back(buffer);
             }
         }
 
-        algo::AlgoVector<int> toSort = vector;
+        output << "Data File: \n" << entry.path() << std::endl;
 
-        std::chrono::steady_clock::time_point start = std::chrono::steady_clock::now();
+        start = Clock::now();
+
+        algo::insertion_sort(toSort.begin(), toSort.end());
+
+        end = Clock::now();
+        time = end - start;
+
+        output << "Insertion Sort time: " << time.count() << " milliseconds" << std::endl << std::endl;
+
+        toSort = vector;
+
+        start = Clock::now();
 
         algo::quick_sort(toSort.begin(), toSort.end());
 
-        std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
+        end = Clock::now();
 
-        std::cout << "File: " << entry.path() << std::endl;
-        std::cout << "Time diff: " << std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count() << " milliseconds" << std::endl;
-//        std::cout << std::is_sorted(toSort.begin(), toSort.end()) << std::endl;
-//        std::cout << std::endl;
+        time = end - start;
 
-        toSort = vector;
-//        algo::quick_sort(toSort.begin(), toSort.end());
-
-
-//        std::cout << std::is_sorted(toSort.begin(), toSort.end()) << std::endl;
-//        std::cout << std::endl;
+        output << "Quick Sort time: " << time.count() << " milliseconds" << std::endl << std::endl;
 
         toSort = vector;
-//        algo::heap_sort(toSort.begin(), toSort.end());
-//        std::cout << std::is_sorted(toSort.begin(), toSort.end()) << std::endl;
-//        std::cout << std::endl;
+
+        start = Clock::now();
+
+        algo::heap_sort(toSort.begin(), toSort.end());
+
+        end = Clock::now();
+
+        time = end - start;
+
+        output << "Heap Sort time: " << time.count() << " milliseconds" << std::endl << std::endl;
+
+        output << std::endl << std::endl;
+
+        vector.clear();
+        toSort.clear();
 
     }
+}
+
+void Driver::writeToFile(std::ofstream &output) {
+
 }
