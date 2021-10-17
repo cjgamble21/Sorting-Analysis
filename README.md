@@ -14,7 +14,7 @@ This keeps the logic of sorting separate from the logic of the containers.
 This project is recommended to be built and run in CLion. Open the project's root directory in CLion. 
 Once opened, head to the file Driver.cpp. In Driver, change the file path to the absolute path of the IntegerData 
 or StringData directory in the project, depending on which data set you want to test.
-For example, since I am on a Mac, my absolute file path is: 
+For example, since I am on a Mac and because I want to test sorting on integer data, my absolute file path would be: 
 ```
 /Users/cjgamble/CLionProjects/21f-pa02-connor-gamble/Data/IntegerData
 ```
@@ -33,7 +33,7 @@ This data file is full of integers, has a size of 100000, is not sorted, and has
 ### Sample Output
 This project will output a file that gives the raw performance data of each algorithm on each input file. 
 Each section will give the path of the input file, the performance of each algorithm on that data set, and a message confirming 
-that the dataset was fully sorted.
+that the dataset was fully sorted after each performance statistic.
 
 Each section will look something like this:
 ```
@@ -41,7 +41,11 @@ Data File: /Users/cjgamble/21f-pa02-connor-gamble/Data/IntegerData/data_integer_
 
 Insertion Sort: 35.23 seconds
 
+Data set is fully sorted!
+
 Quick Sort: 2.34 seconds
+
+Data set is fully sorted!
 
 Heap Sort: 1.38 seconds
 
@@ -82,3 +86,5 @@ The number range varied betweeen 1 and 3,000,000.
 
 ### Generating String Data
 All string data was generated as 10 character strings, all alphanumeric capital letters. In a loop run 10 times, a pseudo-random number generator picked a number between 65 and 90, then that number was casted to a character and appended to the data string.
+
+
