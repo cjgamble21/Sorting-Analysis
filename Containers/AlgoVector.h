@@ -95,43 +95,6 @@ namespace algo {
             return capacity;
         }
 
-        void heapify(int n, int i) {
-            int largest = i;
-            int l = 2 * i + 1;
-            int r = 2 * i + 2;
-            std::cout << data[largest] << std::endl;
-//            std::cout << l << std::endl;
-//            std::cout << r << std::endl;
-//            std::cout << std::endl;
-
-            if (l < n && data[l] > data[largest]) {
-                largest = l;
-            }
-
-            if (r < n && data[r] > data[largest]) {
-                largest = r;
-            }
-
-            if (largest != i) {
-                std::swap(data[i], data[largest]);
-
-                heapify(n, largest);
-            }
-        }
-
-        void heapsort(int n) {
-            for (int i = n / 2 - 1; i >= 0; i--) {
-                heapify(n, i);
-            }
-
-            for (int i = n - 1; i > 0; i--) {
-                std::swap(data[0], data[i]);
-                std::cout << data[i] << std::endl;
-
-                heapify(i, 0);
-            }
-        }
-
         void push_back(const T &arg) {
             if (size == capacity) {
                 reallocate();
