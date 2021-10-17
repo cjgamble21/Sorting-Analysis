@@ -7,4 +7,4 @@ add_subdirectory(Tests)
 enable_testing()
 
 add_executable(21f_pa02_connor_gamble
-        main.cpp Containers/AlgoVector.h Containers/AlgoList.h Containers/AlgoAVLTree.h)
+        main.cpp Containers/AlgoVector.h Containers/AlgoList.h Containers/AlgoAVLTree.h Driver.h Driver.cpp)
