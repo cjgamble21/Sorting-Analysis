@@ -32,7 +32,7 @@ int main() {
     vector.push_back(15);
     vector.push_back(20);
 
-    algo::heapsort(vector.begin(), vector.end());
+    algo::heap_sort(vector.begin(), vector.end(), compare);
 //    vector.heapsort(vector.getSize());
 
 //    algo::quick_sort(vector.begin(), vector.end(), compare);

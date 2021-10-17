@@ -92,8 +92,12 @@ namespace algo {
         }
     }
 
+    /*
+     * Code referenced for heapsort:
+     * https://gist.github.com/dmatveev/6008120
+     */
     template<class RAIterator>
-    void heapsort(RAIterator begin, RAIterator end) {
+    void heap_sort(RAIterator begin, RAIterator end) {
         int size = end - begin;
         for (int i = (size / 2) - 1; i >= 0; i--) {
             heapify(begin, end, i, size);
@@ -113,17 +117,52 @@ namespace algo {
 
         int largest = i;
 
-        if (l < heapSize && *(begin + l) > *(begin + i)) {
+        if (l < heapSize && *(begin + i) < *(begin + l)) {
             largest = l;
         }
 
-        if (r < heapSize && *(begin + r) > *(begin + largest)) {
+        if (r < heapSize && *(begin + largest) < *(begin + r)) {
             largest = r;
         }
 
         if (largest != i) {
             std::swap(*(begin + i), *(begin + largest));
             heapify(begin, end, largest, heapSize);
+        }
+    }
+
+    template<class RAIterator, class Compare>
+    void heap_sort(RAIterator begin, RAIterator end, Compare comparator) {
+        int size = end - begin;
+        for (int i = (size / 2) - 1; i >= 0; i--) {
+            heapify(begin, end, i, size, comparator);
+        }
+
+        for (int i = size - 1; i > 0; i--) {
+            std::swap(*begin, *(begin + i));
+            size -= 1;
+            heapify(begin, end, 0, size, comparator);
+        }
+    }
+
+    template<class RAIterator, class Compare>
+    void heapify(RAIterator begin, RAIterator end, int i, int heapSize, Compare comparator) {
+        int l = 2 * (i + 1) - 1;
+        int r = 2 * (i + 1);
+
+        int largest = i;
+
+        if (l < heapSize && comparator(*(begin + i), *(begin + l))) {
+            largest = l;
+        }
+
+        if (r < heapSize && comparator(*(begin + largest), *(begin + r))) {
+            largest = r;
+        }
+
+        if (largest != i) {
+            std::swap(*(begin + i), *(begin + largest));
+            heapify(begin, end, largest, heapSize, comparator);
         }
     }
 }
