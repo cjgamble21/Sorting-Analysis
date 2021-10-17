@@ -95,53 +95,40 @@ namespace algo {
             return capacity;
         }
 
-        int partition(int i, int k) {
-            int l;
-            int h;
-            int midpoint;
-            T pivot;
-            midpoint = i + (k - i) / 2;
-//            std::cout << midpoint << std::endl;
-            pivot = data[midpoint];
-            std::cout << pivot << std::endl;
+        void heapify(int n, int i) {
+            int largest = i;
+            int l = 2 * i + 1;
+            int r = 2 * i + 2;
+            std::cout << data[largest] << std::endl;
+//            std::cout << l << std::endl;
+//            std::cout << r << std::endl;
+//            std::cout << std::endl;
 
-            bool done = false;
-            l = i;
-            h = k;
-
-            while (l < h) {
-                /* Increment l while numbers[l] < pivot */
-                while (data[l] < pivot) {
-                    ++l;
-                }
-
-                /* Decrement h while pivot < numbers[h] */
-                while (pivot < data[h]) {
-                    --h;
-                }
-
-                /* If there are zero or one elements remaining,
-                 all numbers are partitioned. Return h */
-                if (l < h) {
-                    /* Swap numbers[l] and numbers[h],
-                     update l and h */
-                    std::swap(data[l], data[h]);
-
-                    ++l;
-                    --h;
-                }
+            if (l < n && data[l] > data[largest]) {
+                largest = l;
             }
 
-            return h;
+            if (r < n && data[r] > data[largest]) {
+                largest = r;
+            }
+
+            if (largest != i) {
+                std::swap(data[i], data[largest]);
+
+                heapify(n, largest);
+            }
         }
 
-        void quickSort(int i, int k) {
-            int j;
-            if (i < k) {
-                j = partition(i, k);
+        void heapsort(int n) {
+            for (int i = n / 2 - 1; i >= 0; i--) {
+                heapify(n, i);
+            }
 
-                quickSort(i, j);
-                quickSort(j + 1, k);
+            for (int i = n - 1; i > 0; i--) {
+                std::swap(data[0], data[i]);
+                std::cout << data[i] << std::endl;
+
+                heapify(i, 0);
             }
         }
 

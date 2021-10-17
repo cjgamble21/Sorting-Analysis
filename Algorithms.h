@@ -92,5 +92,39 @@ namespace algo {
         }
     }
 
+    template<class RAIterator>
+    void heapsort(RAIterator begin, RAIterator end) {
+        int size = end - begin;
+        for (int i = (size / 2) - 1; i >= 0; i--) {
+            heapify(begin, end, i, size);
+        }
+
+        for (int i = size - 1; i > 0; i--) {
+            std::swap(*begin, *(begin + i));
+            size -= 1;
+            heapify(begin, end, 0, size);
+        }
+    }
+
+    template<class RAIterator>
+    void heapify(RAIterator begin, RAIterator end, int i, int heapSize) {
+        int l = 2 * (i + 1) - 1;
+        int r = 2 * (i + 1);
+
+        int largest = i;
+
+        if (l < heapSize && *(begin + l) > *(begin + i)) {
+            largest = l;
+        }
+
+        if (r < heapSize && *(begin + r) > *(begin + largest)) {
+            largest = r;
+        }
+
+        if (largest != i) {
+            std::swap(*(begin + i), *(begin + largest));
+            heapify(begin, end, largest, heapSize);
+        }
+    }
 }
 #endif //INC_21F_PA02_CONNOR_GAMBLE_ALGORITHMS_H
