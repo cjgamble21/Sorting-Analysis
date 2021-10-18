@@ -1,6 +1,7 @@
 # CS 3353 PA02 Abstract Sorting
 [![Language](https://img.shields.io/badge/language-C++-blue.svg)](https://isocpp.org/)
 [![Standard](https://img.shields.io/badge/c%2B%2B-17-blue.svg)](https://en.wikipedia.org/wiki/C%2B%2B17)
+[![Language](https://img.shields.io/badge/language-python3-green.svg)](https://isocpp.org/)
 
 ## Table of Contents
 * [Problem Statement](#problem-statement)
@@ -44,7 +45,7 @@ This data file is full of integers, has a size of 100000, is not sorted, and has
 ### Sample Output
 This project will output a file that gives the raw performance data of each algorithm on each input file. 
 Each section will give the path of the input file, the performance of each algorithm on that data set, and a message confirming 
-that the dataset was fully sorted after each performance statistic.
+that the dataset was fully sorted after each performance statistic. The confirmation messages are only triggered when the STL std::is_sorted method verifies that the container is sorted. 
 
 Each section will look something like this:
 ```
@@ -137,4 +138,8 @@ With datasets less than 10,000, Insertion Sort performed as well as if not bette
 
 #### On Quick Sort
 
+The most immediate observation about Quick Sort from the graphs is that Quick Sort is absolutely amazing for randomized, unique data. With randomized data of 0 duplicates, Quick Sort performed unbelievably quickly. In other data configurations however, Quick Sort struggled greatly. For starters, with duplicate data, Quick Sort began losing ground to Heap Sort relatively quickly. The 20% duplicate dataset did not trip up Quick Sort that much, but the 40% duplicate dataset slowed it down quite a bit. Next up, Quick Sort was absolutely abysmal with the sorted datasets. Quick Sort performed the worst out of all 3 algorithms on the sorted datasets, which is shocking. If there is any premonition that the dataset might be sorted, avoid Quick Sort at all costs. 
 
+#### On Heap Sort
+
+Heap Sort really seemed to come away with the win from this data. It had no major struggles like the first two sorts, and seems very ideal for a wide range of applications. It doesn not, however, have a very clear strength like the other sorts. 
