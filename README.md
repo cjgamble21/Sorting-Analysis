@@ -113,3 +113,13 @@ All string data was generated as 10 character strings, all alphanumeric capital 
 ![image](https://user-images.githubusercontent.com/78129094/137661670-63b2ed4d-776a-4ce1-a257-7b09532b9f01.png)
 
 ### String Performance Graphs
+
+![image](https://user-images.githubusercontent.com/78129094/137663740-46a68f1c-6b6b-4068-b137-7eed526ca907.png)
+
+![image](https://user-images.githubusercontent.com/78129094/137663752-fc6f9b1a-97e2-439f-86e8-461bc62f2dad.png)
+
+![image](https://user-images.githubusercontent.com/78129094/137664037-09a269ae-b33b-4d3a-b1b1-b8249d2e83cb.png)
+
+
+
+
