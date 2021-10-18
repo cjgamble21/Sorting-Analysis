@@ -93,3 +93,15 @@ The number range varied betweeen 1 and 3,000,000.
 All string data was generated as 10 character strings, all alphanumeric capital letters. In a loop run 10 times, a pseudo-random number generator picked a number between 65 and 90, then that number was casted to a character and appended to the data string.
 
 ## Performance Analysis
+
+### Integer Performance Graphs
+![image](https://user-images.githubusercontent.com/78129094/137661526-cf0ea9c0-6eb2-4975-b8dc-1ab06a230972.png)
+
+
+![image](https://user-images.githubusercontent.com/78129094/137661604-688ca0ed-002a-4100-b1ed-4620c05cb566.png)
+
+![image](https://user-images.githubusercontent.com/78129094/137661625-cee3edc8-ce46-4ab0-840e-1cdbb64b20e7.png)
+
+![image](https://user-images.githubusercontent.com/78129094/137661651-536c4b28-e7d7-46d3-9927-9fb6786c2b2b.png)
+
+![image](https://user-images.githubusercontent.com/78129094/137661670-63b2ed4d-776a-4ce1-a257-7b09532b9f01.png)
