@@ -1,12 +1,15 @@
 # CS 3353 PA02 Abstract Sorting
 [![Language](https://img.shields.io/badge/language-C++-blue.svg)](https://isocpp.org/)
 [![Standard](https://img.shields.io/badge/c%2B%2B-17-blue.svg)](https://en.wikipedia.org/wiki/C%2B%2B17)
+[![Language](https://img.shields.io/badge/language-python3-green.svg)](https://isocpp.org/)
 
 ## Table of Contents
 * [Problem Statement](#problem-statement)
 * [Building and Running](#building-and-running)
 * [Data Generation](#data-generation)
 * [Performance Analysis](#performance-analysis)
+* [Conclusions](#conclusions-drawn-from-analysis)
+* [Final Note](#final-note-about-sizes)
 
 ## Problem Statement
 In this project, we are implementing sorting algorithms and running those algorithms on varying size and types of data sets. 
@@ -29,7 +32,7 @@ If you are sorting strings, the output file name should be:
 ```
 "StringResultData.txt"
 ```
-Now run the project and the application will output a csv file of the performance data for the sorting algorithms relative to each file size/configuration.
+Now run the project and the application will output a file including the performance data for the sorting algorithms relative to each file size/configuration.
 
 ### Sample input
 Every input file is a specific configuration and size, as specified by the name of the file. 
@@ -44,7 +47,7 @@ This data file is full of integers, has a size of 100000, is not sorted, and has
 ### Sample Output
 This project will output a file that gives the raw performance data of each algorithm on each input file. 
 Each section will give the path of the input file, the performance of each algorithm on that data set, and a message confirming 
-that the dataset was fully sorted after each performance statistic.
+that the dataset was fully sorted after each performance statistic. The confirmation messages are only triggered when the STL std::is_sorted method verifies that the container is sorted. 
 
 Each section will look something like this:
 ```
@@ -137,4 +140,31 @@ With datasets less than 10,000, Insertion Sort performed as well as if not bette
 
 #### On Quick Sort
 
+The most immediate observation about Quick Sort from the graphs is that Quick Sort is absolutely amazing for randomized, unique data. With randomized data of 0 duplicates, Quick Sort performed unbelievably quickly. In other data configurations however, Quick Sort struggled greatly. For starters, with duplicate data, Quick Sort began losing ground to Heap Sort relatively quickly. The 20% duplicate dataset did not trip up Quick Sort that much, but the 40% duplicate dataset slowed it down quite a bit. Next up, Quick Sort was absolutely abysmal with the sorted datasets. Quick Sort performed the worst out of all 3 algorithms on the sorted datasets, which is shocking. If there is any premonition that the dataset might be sorted, avoid Quick Sort at all costs. 
 
+#### On Heap Sort
+
+Heap Sort really seemed to come away with the win from this data. It had no major struggles like the first two sorts, and seems very ideal for a wide range of applications. It doesn not, however, have a very clear strength like the other sorts. The only times that Heap Sort ended up being slower than another algorithm were two cases: It lost to Quick Sort when sorting randomized data with 0% duplicates, and it lost to Insertion Sort when sorting already sorted data (ascending order).
+
+#### Juxtoposition of Integer and String Data
+
+Despite an increase in runtime when sorting strings vs sorting integers, there was very little change in the trends of the data. Every trend observed in the integer data appeared in the string data.
+
+## Conclusions Drawn from Analysis
+
+### Insertion Sort
+
+#### Perfect for very small datasets, avoid when needing to sort larger datasets
+
+### Quick Sort
+
+#### Perfect for random datasets with no duplicates, avoid large amounts of duplicates, and avoid already sorted data AT ALL COSTS
+
+### Heap Sort
+
+#### Very ideal for sorting a large range of data configurations; really a "jack of all trades" algorithm
+
+## Final Note about Sizes
+
+### Data Set Sizes
+To reiterate, the data set sizes are small mainly because I had a lot of trouble with Quick Sort seg-faulting on the large data sets. This mainly had to do with the fact that my Quick Sort algorithm chooses its pivot at the beginning of the vector, rather than randomly or in the middle. Because of this, when attempting to sort an already sorted vector, the algorithm deteriates to worst case complexity and the call stack overflows from too many recursive calls. If I could have used a different pivot choice strategy, I would have, but only having access to iterators limited my ability to implement such logic. 
