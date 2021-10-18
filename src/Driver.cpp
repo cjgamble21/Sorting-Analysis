@@ -6,7 +6,7 @@
 
 void Driver::run() {
     fileName = "/Users/cjgamble/CLionProjects/21f-pa02-connor-gamble/Data/StringData";
-    std::ofstream output("StringResultsData.txt");
+    std::ofstream output("../PerformanceData/StringResultsData.txt");
     typedef std::chrono::steady_clock Clock;
     algo::AlgoVector<std::string> vector;
     algo::AlgoVector<std::string> toSort;
