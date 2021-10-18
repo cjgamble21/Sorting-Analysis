@@ -1,0 +1,448 @@
+Data File: 
+"/Users/cjgamble/CLionProjects/21f-pa02-connor-gamble/Data/IntegerData/data_integer_1000_ascend_0.0.txt"
+Insertion Sort time: 1.5e-05 seconds
+
+Data set is fully sorted!
+
+Quick Sort time: 0.00385 seconds
+
+Data set is fully sorted!
+
+Heap Sort time: 0.000371 seconds
+
+Data set is fully sorted!
+
+
+
+Data File: 
+"/Users/cjgamble/CLionProjects/21f-pa02-connor-gamble/Data/IntegerData/data_integer_20000_null_0.4.txt"
+Insertion Sort time: 1.33992 seconds
+
+Data set is fully sorted!
+
+Quick Sort time: 0.208402 seconds
+
+Data set is fully sorted!
+
+Heap Sort time: 0.008275 seconds
+
+Data set is fully sorted!
+
+
+
+Data File: 
+"/Users/cjgamble/CLionProjects/21f-pa02-connor-gamble/Data/IntegerData/data_integer_100_descend_0.0.txt"
+Insertion Sort time: 8.3e-05 seconds
+
+Data set is fully sorted!
+
+Quick Sort time: 9.7e-05 seconds
+
+Data set is fully sorted!
+
+Heap Sort time: 1.9e-05 seconds
+
+Data set is fully sorted!
+
+
+
+Data File: 
+"/Users/cjgamble/CLionProjects/21f-pa02-connor-gamble/Data/IntegerData/data_integer_20000_null_0.2.txt"
+Insertion Sort time: 1.52517 seconds
+
+Data set is fully sorted!
+
+Quick Sort time: 0.056761 seconds
+
+Data set is fully sorted!
+
+Heap Sort time: 0.009521 seconds
+
+Data set is fully sorted!
+
+
+
+Data File: 
+"/Users/cjgamble/CLionProjects/21f-pa02-connor-gamble/Data/IntegerData/data_integer_20000_null_0.0.txt"
+Insertion Sort time: 1.58132 seconds
+
+Data set is fully sorted!
+
+Quick Sort time: 0.00626 seconds
+
+Data set is fully sorted!
+
+Heap Sort time: 0.009503 seconds
+
+Data set is fully sorted!
+
+
+
+Data File: 
+"/Users/cjgamble/CLionProjects/21f-pa02-connor-gamble/Data/IntegerData/data_integer_100_null_0.2.txt"
+Insertion Sort time: 4.2e-05 seconds
+
+Data set is fully sorted!
+
+Quick Sort time: 1.3e-05 seconds
+
+Data set is fully sorted!
+
+Heap Sort time: 2.1e-05 seconds
+
+Data set is fully sorted!
+
+
+
+Data File: 
+"/Users/cjgamble/CLionProjects/21f-pa02-connor-gamble/Data/IntegerData/data_integer_100_null_0.0.txt"
+Insertion Sort time: 4.3e-05 seconds
+
+Data set is fully sorted!
+
+Quick Sort time: 1.3e-05 seconds
+
+Data set is fully sorted!
+
+Heap Sort time: 2.1e-05 seconds
+
+Data set is fully sorted!
+
+
+
+Data File: 
+"/Users/cjgamble/CLionProjects/21f-pa02-connor-gamble/Data/IntegerData/data_integer_50000_ascend_0.0.txt"
+Insertion Sort time: 0.000565 seconds
+
+Data set is fully sorted!
+
+Quick Sort time: 7.95694 seconds
+
+Data set is fully sorted!
+
+Heap Sort time: 0.026315 seconds
+
+Data set is fully sorted!
+
+
+
+Data File: 
+"/Users/cjgamble/CLionProjects/21f-pa02-connor-gamble/Data/IntegerData/data_integer_100_null_0.4.txt"
+Insertion Sort time: 4.8e-05 seconds
+
+Data set is fully sorted!
+
+Quick Sort time: 1.7e-05 seconds
+
+Data set is fully sorted!
+
+Heap Sort time: 2e-05 seconds
+
+Data set is fully sorted!
+
+
+
+Data File: 
+"/Users/cjgamble/CLionProjects/21f-pa02-connor-gamble/Data/IntegerData/data_integer_100_ascend_0.0.txt"
+Insertion Sort time: 2e-06 seconds
+
+Data set is fully sorted!
+
+Quick Sort time: 3.5e-05 seconds
+
+Data set is fully sorted!
+
+Heap Sort time: 2.2e-05 seconds
+
+Data set is fully sorted!
+
+
+
+Data File: 
+"/Users/cjgamble/CLionProjects/21f-pa02-connor-gamble/Data/IntegerData/data_integer_100000_null_0.2.txt"
+Insertion Sort time: 38.3241 seconds
+
+Data set is fully sorted!
+
+Quick Sort time: 1.31196 seconds
+
+Data set is fully sorted!
+
+Heap Sort time: 0.055364 seconds
+
+Data set is fully sorted!
+
+
+
+Data File: 
+"/Users/cjgamble/CLionProjects/21f-pa02-connor-gamble/Data/IntegerData/data_integer_100000_null_0.0.txt"
+Insertion Sort time: 39.9123 seconds
+
+Data set is fully sorted!
+
+Quick Sort time: 0.034857 seconds
+
+Data set is fully sorted!
+
+Heap Sort time: 0.056749 seconds
+
+Data set is fully sorted!
+
+
+
+Data File: 
+"/Users/cjgamble/CLionProjects/21f-pa02-connor-gamble/Data/IntegerData/data_integer_100000_null_0.4.txt"
+Insertion Sort time: 33.4355 seconds
+
+Data set is fully sorted!
+
+Quick Sort time: 5.13227 seconds
+
+Data set is fully sorted!
+
+Heap Sort time: 0.046226 seconds
+
+Data set is fully sorted!
+
+
+
+Data File: 
+"/Users/cjgamble/CLionProjects/21f-pa02-connor-gamble/Data/IntegerData/data_integer_1000_null_0.2.txt"
+Insertion Sort time: 0.003785 seconds
+
+Data set is fully sorted!
+
+Quick Sort time: 0.000366 seconds
+
+Data set is fully sorted!
+
+Heap Sort time: 0.00032 seconds
+
+Data set is fully sorted!
+
+
+
+Data File: 
+"/Users/cjgamble/CLionProjects/21f-pa02-connor-gamble/Data/IntegerData/data_integer_20000_ascend_0.0.txt"
+Insertion Sort time: 0.000225 seconds
+
+Data set is fully sorted!
+
+Quick Sort time: 1.27452 seconds
+
+Data set is fully sorted!
+
+Heap Sort time: 0.009588 seconds
+
+Data set is fully sorted!
+
+
+
+Data File: 
+"/Users/cjgamble/CLionProjects/21f-pa02-connor-gamble/Data/IntegerData/data_integer_50000_null_0.2.txt"
+Insertion Sort time: 9.61183 seconds
+
+Data set is fully sorted!
+
+Quick Sort time: 0.333606 seconds
+
+Data set is fully sorted!
+
+Heap Sort time: 0.026224 seconds
+
+Data set is fully sorted!
+
+
+
+Data File: 
+"/Users/cjgamble/CLionProjects/21f-pa02-connor-gamble/Data/IntegerData/data_integer_20000_descend_0.0.txt"
+Insertion Sort time: 3.1875 seconds
+
+Data set is fully sorted!
+
+Quick Sort time: 3.69872 seconds
+
+Data set is fully sorted!
+
+Heap Sort time: 0.008728 seconds
+
+Data set is fully sorted!
+
+
+
+Data File: 
+"/Users/cjgamble/CLionProjects/21f-pa02-connor-gamble/Data/IntegerData/data_integer_10000_descend_0.0.txt"
+Insertion Sort time: 0.795962 seconds
+
+Data set is fully sorted!
+
+Quick Sort time: 0.923375 seconds
+
+Data set is fully sorted!
+
+Heap Sort time: 0.00415 seconds
+
+Data set is fully sorted!
+
+
+
+Data File: 
+"/Users/cjgamble/CLionProjects/21f-pa02-connor-gamble/Data/IntegerData/data_integer_50000_null_0.0.txt"
+Insertion Sort time: 10.0088 seconds
+
+Data set is fully sorted!
+
+Quick Sort time: 0.016039 seconds
+
+Data set is fully sorted!
+
+Heap Sort time: 0.02665 seconds
+
+Data set is fully sorted!
+
+
+
+Data File: 
+"/Users/cjgamble/CLionProjects/21f-pa02-connor-gamble/Data/IntegerData/data_integer_10000_null_0.4.txt"
+Insertion Sort time: 0.334964 seconds
+
+Data set is fully sorted!
+
+Quick Sort time: 0.054023 seconds
+
+Data set is fully sorted!
+
+Heap Sort time: 0.003148 seconds
+
+Data set is fully sorted!
+
+
+
+Data File: 
+"/Users/cjgamble/CLionProjects/21f-pa02-connor-gamble/Data/IntegerData/data_integer_1000_null_0.0.txt"
+Insertion Sort time: 0.004029 seconds
+
+Data set is fully sorted!
+
+Quick Sort time: 0.000218 seconds
+
+Data set is fully sorted!
+
+Heap Sort time: 0.000323 seconds
+
+Data set is fully sorted!
+
+
+
+Data File: 
+"/Users/cjgamble/CLionProjects/21f-pa02-connor-gamble/Data/IntegerData/data_integer_1000_null_0.4.txt"
+Insertion Sort time: 0.003341 seconds
+
+Data set is fully sorted!
+
+Quick Sort time: 0.00065 seconds
+
+Data set is fully sorted!
+
+Heap Sort time: 0.000305 seconds
+
+Data set is fully sorted!
+
+
+
+Data File: 
+"/Users/cjgamble/CLionProjects/21f-pa02-connor-gamble/Data/IntegerData/data_integer_10000_null_0.0.txt"
+Insertion Sort time: 0.396814 seconds
+
+Data set is fully sorted!
+
+Quick Sort time: 0.002722 seconds
+
+Data set is fully sorted!
+
+Heap Sort time: 0.004472 seconds
+
+Data set is fully sorted!
+
+
+
+Data File: 
+"/Users/cjgamble/CLionProjects/21f-pa02-connor-gamble/Data/IntegerData/data_integer_50000_null_0.4.txt"
+Insertion Sort time: 8.43674 seconds
+
+Data set is fully sorted!
+
+Quick Sort time: 1.29226 seconds
+
+Data set is fully sorted!
+
+Heap Sort time: 0.021981 seconds
+
+Data set is fully sorted!
+
+
+
+Data File: 
+"/Users/cjgamble/CLionProjects/21f-pa02-connor-gamble/Data/IntegerData/data_integer_1000_descend_0.0.txt"
+Insertion Sort time: 0.007916 seconds
+
+Data set is fully sorted!
+
+Quick Sort time: 0.009243 seconds
+
+Data set is fully sorted!
+
+Heap Sort time: 0.000294 seconds
+
+Data set is fully sorted!
+
+
+
+Data File: 
+"/Users/cjgamble/CLionProjects/21f-pa02-connor-gamble/Data/IntegerData/data_integer_10000_ascend_0.0.txt"
+Insertion Sort time: 0.000112 seconds
+
+Data set is fully sorted!
+
+Quick Sort time: 0.319523 seconds
+
+Data set is fully sorted!
+
+Heap Sort time: 0.004434 seconds
+
+Data set is fully sorted!
+
+
+
+Data File: 
+"/Users/cjgamble/CLionProjects/21f-pa02-connor-gamble/Data/IntegerData/data_integer_10000_null_0.2.txt"
+Insertion Sort time: 0.385515 seconds
+
+Data set is fully sorted!
+
+Quick Sort time: 0.015661 seconds
+
+Data set is fully sorted!
+
+Heap Sort time: 0.004434 seconds
+
+Data set is fully sorted!
+
+
+
+Data File: 
+"/Users/cjgamble/CLionProjects/21f-pa02-connor-gamble/Data/IntegerData/data_integer_50000_descend_0.0.txt"
+Insertion Sort time: 20.1345 seconds
+
+Data set is fully sorted!
+
+Quick Sort time: 23.1567 seconds
+
+Data set is fully sorted!
+
+Heap Sort time: 0.02451 seconds
+
+Data set is fully sorted!
+
+
+

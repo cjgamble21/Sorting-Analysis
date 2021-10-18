@@ -3,7 +3,7 @@
 //
 
 #include <catch2/catch_all.hpp>
-#include "../Containers/AlgoList.h"
+#include "../src/Containers/AlgoList.h"
 
 TEST_CASE("A list can be instantiated") {
     algo::AlgoList<int> list;
