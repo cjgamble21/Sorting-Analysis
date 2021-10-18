@@ -5,17 +5,17 @@
 #include "Driver.h"
 
 void Driver::run() {
-    fileName = "/Users/cjgamble/CLionProjects/21f-pa02-connor-gamble/Data/IntegerData";
-    std::ofstream output("IntegerResultsData.txt");
+    fileName = "/Users/cjgamble/CLionProjects/21f-pa02-connor-gamble/Data/StringData";
+    std::ofstream output("StringResultsData.txt");
     typedef std::chrono::steady_clock Clock;
-    algo::AlgoVector<int> vector;
-    algo::AlgoVector<int> toSort;
+    algo::AlgoVector<std::string> vector;
+    algo::AlgoVector<std::string> toSort;
     Clock::time_point start;
     Clock::time_point end;
     std::chrono::duration<double> time{};
 
     for (const auto& entry : std::filesystem::directory_iterator(fileName)) {
-        int buffer;
+        std::string buffer;
 //        std::cout << entry.path() << std::endl;
         std::ifstream file(entry.path());
 
@@ -39,7 +39,11 @@ void Driver::run() {
         end = Clock::now();
         time = end - start;
 
-        output << "Insertion Sort time: " << time.count() << " milliseconds" << std::endl << std::endl;
+        output << "Insertion Sort time: " << time.count() << " seconds" << std::endl << std::endl;
+
+        if (std::is_sorted(toSort.begin(), toSort.end())) {
+            output << "Data set is fully sorted!" << std::endl << std::endl;
+        }
 
         toSort = vector;
 
@@ -51,7 +55,11 @@ void Driver::run() {
 
         time = end - start;
 
-        output << "Quick Sort time: " << time.count() << " milliseconds" << std::endl << std::endl;
+        output << "Quick Sort time: " << time.count() << " seconds" << std::endl << std::endl;
+
+        if (std::is_sorted(toSort.begin(), toSort.end())) {
+            output << "Data set is fully sorted!" << std::endl << std::endl;
+        }
 
         toSort = vector;
 
@@ -63,7 +71,12 @@ void Driver::run() {
 
         time = end - start;
 
-        output << "Heap Sort time: " << time.count() << " milliseconds" << std::endl << std::endl;
+        output << "Heap Sort time: " << time.count() << " seconds" << std::endl << std::endl;
+
+        if (std::is_sorted(toSort.begin(), toSort.end())) {
+            output << "Data set is fully sorted!" << std::endl << std::endl;
+        }
+
 
         output << std::endl << std::endl;
 
@@ -71,8 +84,4 @@ void Driver::run() {
         toSort.clear();
 
     }
-}
-
-void Driver::writeToFile(std::ofstream &output) {
-
 }
