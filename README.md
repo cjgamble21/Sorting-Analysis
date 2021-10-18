@@ -30,7 +30,7 @@ If you are sorting strings, the output file name should be:
 ```
 "StringResultData.txt"
 ```
-Now run the project and the application will output a csv file of the performance data for the sorting algorithms relative to each file size/configuration.
+Now run the project and the application will output a file including the performance data for the sorting algorithms relative to each file size/configuration.
 
 ### Sample input
 Every input file is a specific configuration and size, as specified by the name of the file. 
@@ -142,4 +142,8 @@ The most immediate observation about Quick Sort from the graphs is that Quick So
 
 #### On Heap Sort
 
-Heap Sort really seemed to come away with the win from this data. It had no major struggles like the first two sorts, and seems very ideal for a wide range of applications. It doesn not, however, have a very clear strength like the other sorts. 
+Heap Sort really seemed to come away with the win from this data. It had no major struggles like the first two sorts, and seems very ideal for a wide range of applications. It doesn not, however, have a very clear strength like the other sorts. The only times that Heap Sort ended up being slower than another algorithm were two cases: It lost to Quick Sort when sorting randomized data with 0% duplicates, and it lost to Insertion Sort when sorting already sorted data (ascending order).
+
+#### Juxtoposition of Integer and String Data
+
+Despite an increase in runtime when sorting strings vs sorting integers, there was very little change in the trends of the data. Every trend observed in the integer data appeared in the string data.
