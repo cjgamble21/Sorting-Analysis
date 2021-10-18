@@ -18,7 +18,12 @@ For example, since I am on a Mac and because I want to test sorting on integer d
 ```
 /Users/cjgamble/CLionProjects/21f-pa02-connor-gamble/Data/IntegerData
 ```
-Once the absolute path is specified, run the project and the application will output a csv file of the performance data for the sorting algorithms, relative to each file size/configuration.
+Once the absolute path is specified, change the output file name to begin with the data type you are sorting. 
+If you are sorting strings, the output file name should be: 
+```
+"StringResultData.txt"
+```
+Now run the project and the application will output a csv file of the performance data for the sorting algorithms relative to each file size/configuration.
 
 ### Sample input
 Every input file is a specific configuration and size, as specified by the name of the file. 
@@ -87,4 +92,4 @@ The number range varied betweeen 1 and 3,000,000.
 ### Generating String Data
 All string data was generated as 10 character strings, all alphanumeric capital letters. In a loop run 10 times, a pseudo-random number generator picked a number between 65 and 90, then that number was casted to a character and appended to the data string.
 
-
+## Performance Analysis
