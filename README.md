@@ -2,6 +2,12 @@
 [![Language](https://img.shields.io/badge/language-C++-blue.svg)](https://isocpp.org/)
 [![Standard](https://img.shields.io/badge/c%2B%2B-17-blue.svg)](https://en.wikipedia.org/wiki/C%2B%2B17)
 
+## Table of Contents
+* [Problem Statement](#problem-statement)
+* [Building and Running](#building-and-running)
+* [Data Generation](#data-generation)
+* [Performance Analysis](#performance-analysis)
+
 ## Problem Statement
 In this project, we are implementing sorting algorithms and running those algorithms on varying size and types of data sets. 
 With our performance data we will analyze each individual sorting algorithms strengths and weaknesses.
@@ -105,3 +111,5 @@ All string data was generated as 10 character strings, all alphanumeric capital 
 ![image](https://user-images.githubusercontent.com/78129094/137661651-536c4b28-e7d7-46d3-9927-9fb6786c2b2b.png)
 
 ![image](https://user-images.githubusercontent.com/78129094/137661670-63b2ed4d-776a-4ce1-a257-7b09532b9f01.png)
+
+### String Performance Graphs
