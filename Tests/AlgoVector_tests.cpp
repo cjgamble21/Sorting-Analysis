@@ -121,12 +121,10 @@ TEST_CASE("Testing for iterators") {
 
     itr2 = &vec1.at(3);
 
-//    std::cout << *itr2 << std::endl;
-
     algo::AlgoVector<int>::Iterator itr3;
     itr2 = itr2 + 3;
 
-//    std::cout << *itr2 << std::endl;
+    std::cout << *itr2 << std::endl;
     // itr2 should equal 6 here
 
     itr3 = itr2 - 2; // should equal 4

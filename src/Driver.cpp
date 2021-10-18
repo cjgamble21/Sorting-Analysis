@@ -16,7 +16,6 @@ void Driver::run() {
 
     for (const auto& entry : std::filesystem::directory_iterator(fileName)) {
         std::string buffer;
-//        std::cout << entry.path() << std::endl;
         std::ifstream file(entry.path());
 
         if (!file.is_open()) {
