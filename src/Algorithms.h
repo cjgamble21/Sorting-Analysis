@@ -165,5 +165,15 @@ namespace algo {
             heapify(begin, end, largest, heapSize, comparator);
         }
     }
+
+    template<class FwdIterator, typename T>
+    T& find(T key, FwdIterator begin, FwdIterator end) {
+        for (auto it = begin; it != end; it++) {
+            if (*it == key) {
+                return *it;
+            }
+        }
+    }
+
 }
 #endif //INC_21F_PA02_CONNOR_GAMBLE_ALGORITHMS_H
