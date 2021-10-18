@@ -98,6 +98,10 @@ The number range varied betweeen 1 and 3,000,000.
 ### Generating String Data
 All string data was generated as 10 character strings, all alphanumeric capital letters. In a loop run 10 times, a pseudo-random number generator picked a number between 65 and 90, then that number was casted to a character and appended to the data string.
 
+### Data Generation Script
+The python script used for generating randomized data can be found here:
+[data_generation.py](./Data/data_generation.py)
+
 ## Performance Analysis
 
 ### Integer Performance Graphs
