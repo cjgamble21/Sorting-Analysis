@@ -8,6 +8,7 @@
 * [Building and Running](#building-and-running)
 * [Data Generation](#data-generation)
 * [Performance Analysis](#performance-analysis)
+* [Conclusions](#conclusions-drawn-from-analysis)
 
 ## Problem Statement
 In this project, we are implementing sorting algorithms and running those algorithms on varying size and types of data sets. 
@@ -147,3 +148,17 @@ Heap Sort really seemed to come away with the win from this data. It had no majo
 #### Juxtoposition of Integer and String Data
 
 Despite an increase in runtime when sorting strings vs sorting integers, there was very little change in the trends of the data. Every trend observed in the integer data appeared in the string data.
+
+## Conclusions Drawn from Analysis
+
+### Insertion Sort
+
+#### Perfect for very small datasets, avoid when needing to sort larger datasets
+
+### Quick Sort
+
+#### Perfect for random datasets with no duplicates, avoid large amounts of duplicates, and avoid already sorted data AT ALL COSTS
+
+### Heap Sort
+
+#### Very ideal for sorting a large range of data configurations; really a "jack of all trades" algorithm
