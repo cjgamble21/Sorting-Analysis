@@ -9,6 +9,7 @@
 * [Data Generation](#data-generation)
 * [Performance Analysis](#performance-analysis)
 * [Conclusions](#conclusions-drawn-from-analysis)
+* [Final Note](#final-note-about-sizes)
 
 ## Problem Statement
 In this project, we are implementing sorting algorithms and running those algorithms on varying size and types of data sets. 
@@ -162,3 +163,8 @@ Despite an increase in runtime when sorting strings vs sorting integers, there w
 ### Heap Sort
 
 #### Very ideal for sorting a large range of data configurations; really a "jack of all trades" algorithm
+
+## Final Note about Sizes
+
+### Data Set Sizes
+To reiterate, the data set sizes are small mainly because I had a lot of trouble with Quick Sort seg-faulting on the large data sets. This mainly had to do with the fact that my Quick Sort algorithm chooses its pivot at the beginning of the vector, rather than randomly or in the middle. Because of this, when attempting to sort an already sorted vector, the algorithm deteriates to worst case complexity and the call stack overflows from too many recursive calls. If I could have used a different pivot choice strategy, I would have, but only having access to iterators limited my ability to implement such logic. 
