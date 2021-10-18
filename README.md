@@ -120,6 +120,17 @@ All string data was generated as 10 character strings, all alphanumeric capital 
 
 ![image](https://user-images.githubusercontent.com/78129094/137664037-09a269ae-b33b-4d3a-b1b1-b8249d2e83cb.png)
 
+![image](https://user-images.githubusercontent.com/78129094/137665251-fa540a2e-412a-4108-8294-2292b191166b.png)
 
+![image](https://user-images.githubusercontent.com/78129094/137665264-7782a8d7-9989-43d1-a4c5-64b43e768a69.png)
+
+### Discussion about Graphs
+
+#### On Insertion Sort
+
+One of the immediate conclusions that can be drawn on Insertion Sort from these graphs is its efficiency with small datasets. 
+With datasets less than 10,000, Insertion Sort performed as well as if not better than Quick Sort and Heap Sort. However, with larger data sets Insertion's efficiency deteriates very quickly, as expected. The only other interesting fact about Insertion Sort in this data is that it performed very quickly on an already sorted (descending order) dataset, in direct contrast to Quick Sort. Speaking of Quick Sort...
+
+#### On Quick Sort
 
 
