@@ -6,7 +6,23 @@
 #define INC_21F_PA02_CONNOR_GAMBLE_ALGOAVLTREE_H
 
 #include <iostream>
+"aarch64-apple-darwin20/bits/c++config.h"
+"aarch64-apple-darwin20/bits/c++config.h"
+"aarch64-apple-darwin20/bits/c++config.h"
 #include <queue>
+"bits/stl_queue.h"
+"bits/stl_algobase.h"
+"bits/stl_algo.h"
+"bits/allocator.h"
+"bits/stl_construct.h"
+"bits/stl_uninitialized.h"
+"bits/stl_deque.h"
+"bits/range_access.h"
+"bits/deque.tcc"
+"bits/stl_queue.h"
+"bits/stl_heap.h"
+"bits/stl_function.h"
+"bits/stl_queue.h"
 
 namespace algo {
 

@@ -6,6 +6,9 @@
 #define INC_21F_PA02_CONNOR_GAMBLE_ALGOLIST_H
 
 #include <iostream>
+"aarch64-apple-darwin20/bits/c++config.h"
+"aarch64-apple-darwin20/bits/c++config.h"
+"aarch64-apple-darwin20/bits/c++config.h"
 
 namespace algo {
 

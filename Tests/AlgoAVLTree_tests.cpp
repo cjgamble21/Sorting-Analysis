@@ -3,7 +3,7 @@
 //
 
 #include <catch2/catch_all.hpp>
-#include "../Containers/AlgoAVLTree.h"
+#include "../src/Containers/AlgoAVLTree.h"
 
 TEST_CASE("A tree object can be instantiated") {
     algo::AlgoAVLTree<int> tree;

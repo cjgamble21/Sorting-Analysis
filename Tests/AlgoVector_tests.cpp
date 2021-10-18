@@ -3,7 +3,7 @@
 //
 
 #include <catch2/catch_all.hpp>
-#include "../Containers/AlgoVector.h"
+#include "../src/Containers/AlgoVector.h"
 
 TEST_CASE("A vector object can be created") {
     algo::AlgoVector<std::string> vector;
